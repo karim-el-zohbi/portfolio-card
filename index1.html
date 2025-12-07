@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> [اسمك] | مطور برمجيات متكامل </title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== المتغيرات والألوان ==================== */
+        :root {
+            --bg-color: #121212; /* خلفية داكنة جداً */
+            --text-color: #f0f0f0; /* لون النص الأبيض الفاتح */
+            --accent-color: #A7FF2C; /* اللون الأخضر الليموني الفاقع (التمييز) */
+            --subtle-text: #a0a0a0; /* لون ثانوي للنصوص الفرعية */
+            --card-bg: #1e1e1e; /* خلفية بطاقات المشاريع */
+            --font-main: 'Cairo', sans-serif;
+            --font-weight-bold: 900;
+        }
+
+        /* ==================== الإعدادات الأساسية ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            min-height: 100vh; /* لجعل الأقسام تملأ الشاشة */
+        }
+
+        /* ==================== النافيقيشن (Header) ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(18, 18, 18, 0.95); /* خلفية شبه شفافة */
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            margin-right: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ==================== زر الدعوة للعمل (Global CTA Button) ==================== */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            font-weight: var(--font-weight-bold);
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, opacity 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            opacity: 1;
+        }
+
+        /* ==================== 1. الصفحة الرئيسية (HERO Section) ==================== */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hero-badge span {
+            margin-left: 8px;
+            font-size: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem; /* حجم ضخم وجريء */
+            font-weight: var(--font-weight-bold);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--subtle-text);
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        /* ==================== شريط التقنيات (Tech Ticker) ==================== */
+        .tech-ticker {
+            overflow: hidden;
+            width: 100%;
+            padding: 30px 0;
+            white-space: nowrap;
+            margin-top: 80px;
+            border-top: 1px solid var(--card-bg);
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: scroll-rtl 30s linear infinite; /* حركة التمرير */
+            padding-right: 100%; /* لضمان التكرار السلس */
+        }
+
+        .ticker-content p {
+            font-size: 1.1rem;
+            margin-left: 40px;
+            font-weight: 400;
+			color: var(--subtle-text);
+			
+        }
+		@keyframes scroll-rtl {
+    /* Starts at the original position (0) */
+    from {
+        transform: translateX(0);
+    }
+    /* Moves to the left by 100% of the element's width */
+    to {
+        transform: translateX(-100%);
+    }
+}
+		
+		 /*@keyframes scroll-rtl {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-100% + 1200px)); }
+        }*/
+
+
+        /*  ==================== 2. معرض الأعمال (BENTO Grid) ==================== */
+        #portfolio .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 60px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 أعمدة أساسية */
+            gap: 20px;
+            grid-auto-rows: minmax(200px, auto);
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            color: var(--subtle-text);
+            margin-bottom: 15px;
+        }
+
+        .card-keywords span {
+            display: inline-block;
+            background-color: #333;
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+        
+        /* تعريف أحجام شبكة بنتو */
+        .card-large {
+            grid-column: span 2; /* تأخذ مساحة عمودين */
+            min-height: 450px;
+        }
+        
+        .card-tall {
+            grid-row: span 2; /* تأخذ مساحة صفين */
+            min-height: 450px;
+            justify-content: flex-start;
+        }
+
+        /* ==================== 3. من أنا (ABOUT ME Section) ==================== */
+        #about .section-title {
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-top: 20px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .tech-icons {
+            margin-top: 40px;
+        }
+
+        .tech-icons img {
+            width: 40px;
+            height: 40px;
+            margin-left: 15px;
+            opacity: 0.7;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: var(--card-bg);
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--subtle-text);
+            font-size: 1.5rem;
+        }
+
+        /* ==================== 4. تواصل معي (CONTACT Section) ==================== */
+        #contact {
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        #contact .section-title {
+            font-size: 3.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.3rem;
+            color: var(--subtle-text);
+            margin-bottom: 50px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        .contact-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-links a {
+            font-weight: 700;
+        }
+        
+        /* ==================== الـ FOOTER ==================== */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--card-bg);
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+        }
+
+        /* الوسائط المتعددة (Mobile Responsiveness) */
+        @media (max-width: 900px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr; /* عمود واحد في الجوال */
+            }
+            .card-large, .card-tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-image {
+                height: 300px;
+                order: -1; /* لجعل الصورة في الأعلى في الجوال */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PORTFOLIO.DEV</div>
+                <div class="nav-links">
+                    <a href="#hero">الرئيسية</a>
+                    <a href="#portfolio">الأعمال</a>
+                    <a href="#about">من أنا</a>
+                    <a href="#contact">تواصل</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="container">
+        <div class="hero-badge">
+            <span style="color: #00ff00;">●</span> متاح للمشاريع الجديدة
+        </div>
+        <h1 class="hero-title">
+            أحول التحديات التقنية المعقدة إلى منتجات رقمية قابلة للتوسع.
+        </h1>
+        <p class="hero-subtitle">
+            مطور ويب وتطبيقات شغوف ببناء برمجيات سريعة، آمنة، وقابلة للتوسع. أساعد الشركات الناشئة ورواد الأعمال على إطلاق منتجاتهم التقنية بنجاح.
+        </p>
+        <a href="#portfolio" class="cta-button">شاهد أعمالي ↓</a>
+        
+        <div class="tech-ticker">
+            <div class="ticker-content">
+						<p>React . React   . React   . React   . React</p>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2 class="section-title">الأعمال والمشاريع البارزة</h2>
+        <div class="bento-grid">
+            
+            <a href="case-study-1.html" class="project-card card-large">
+                <div class="card-content">
+                    <h3 class="card-title">منصة إدارة الموارد الرقمية (DRM Platform)</h3>
+                    <p class="card-desc">حل برمجي Full-Stack لبناء بيئات عمل عن بعد. نظام إدارة كامل مع صلاحيات متقدمة وبنية خلفية قوية.</p>
+                    <div class="card-keywords">
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>Microservices</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="case-study-2.html" class="project-card card-tall">
+                <div class="card-content">
+                    <h3 class="card-title">تطبيق تتبع اللياقة الشخصية (UX First)</h3>
+                    <p class="card-desc">تطبيق أصلي (Native-feeling App) بـ React Native لتسجيل الأداء الرياضي وتجربة مستخدم مبهرة.</p>
+                    <div class="card-keywords">
+                        <span>React Native</span>
+                        <span>Redux</span>
+                        <span>UI/UX</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="case-study-3.html" class="project-card">
+                <div class="card-content">
+                    <h3 class="card-title">سيرفر التخزين المؤقت الذكي (Smart Cache)</h3>
+                    <p class="card-desc">بناء بنية تحتية لتحمل آلاف الطلبات في الثانية مع زمن استجابة أقل من 50 مللي ثانية باستخدام Serverless.</p>
+                    <div class="card-keywords">
+                        <span>AWS Lambda</span>
+                        <span>Redis</span>
+                        <span>Serverless</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="case-study-4.html" class="project-card">
+                <div class="card-content">
+                    <h3 class="card-title">تطوير API مخصص لـ [اسم شركة]</h3>
+                    <p class="card-desc">بناء واجهات برمجية آمنة وفعالة لربط أنظمة داخلية مختلفة وتبادل البيانات بكفاءة عالية.</p>
+                    <div class="card-keywords">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>REST API</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">نبذة عني</h2>
+        <div class="about-content">
+            
+            <div class="about-text">
+                <h3>بناء الحلول، لا الميزات.</h3>
+                <p>مطور مواقع وتطبيقات شغوف بتحويل التحديات المعقدة إلى منتجات رقمية سهلة الاستخدام وقوية الأداء. عملي يتجاوز كتابة الكود؛ أركز على فهم الهدف التجاري للعميل وبناء بنية تحتية برمجية (Architecture) تضمن التوسع والأمان على المدى الطويل.</p>
+                <p>في كل مشروع، أجمع بين التفكير المنطقي للمهندس وبين الذوق الرفيع للمصمم. النتيجة؟ منتجات تحظى بإعجاب المستخدمين وتحقق نتائج أعمال حقيقية.</p>
+
+                <h3>التقنيات التي أتقنها</h3>
+                <div class="tech-icons">
+                    <img src="placeholder-react.svg" alt="React">
+                    <img src="placeholder-node.svg" alt="Node.js">
+                    <img src="placeholder-flutter.svg" alt="Flutter">
+                    <img src="placeholder-aws.svg" alt="AWS">
+                    <img src="placeholder-python.svg" alt="Python">
+                </div>
+
+                <h3 style="margin-top: 40px;">خارج عالم الأكواد</h3>
+                <p style="font-size: 1rem; color: var(--subtle-text);">عندما لا أكون أمام محرر الأكواد، غالباً ما تجدني: أستمع لموسيقى الجاز القديمة، أتدرب على تطوير أداة ذكاء اصطناعي صغيرة، أو أستكشف أحدث كتب علم النفس السلوكي.</p>
+            </div>
+
+            <div class="about-image">
+                [صورة شخصية احترافية هنا]
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">مشروعك التالي يبدأ هنا.</h2>
+        <p class="contact-subtitle">هل لديك تحدٍ تقني يتطلب حلاً مبتكراً؟ أنا هنا للاستماع والمساعدة في صياغة رؤيتك التقنية. تواصل معي مباشرة.</p>
+
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="الاسم الكامل" required>
+            <input type="email" name="email" placeholder="البريد الإلكتروني للعمل" required>
+            <textarea name="message" rows="6" placeholder="كيف يمكنني المساعدة؟ (اذكر فكرة المشروع أو التحدي)" required></textarea>
+            <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">ابدأ المحادثة</button>
+        </form>
+        
+        <div class="contact-links">
+            <a href="mailto:your.email@example.com">البريد الإلكتروني المباشر</a>
+            <a href="[Your-LinkedIn-URL]" target="_blank">LinkedIn</a>
+            <a href="[Your-GitHub-URL]" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2025 [اسمك]. جميع الحقوق محفوظة. | مُصمم بأناقة وبنية برمجية نظيفة.
+        </div>
+    </footer>
+
+</body>
+</html>
