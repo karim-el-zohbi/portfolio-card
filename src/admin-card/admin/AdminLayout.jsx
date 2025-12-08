@@ -10,6 +10,7 @@ export default function AdminLayout() {
       {/* Child admin pages render here */}
       <div className="flex-1 p-6">
         <Outlet />
+        {/* renders the AdminSidebar childs inside the page */}
       </div>
     </div>
   );

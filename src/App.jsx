@@ -33,19 +33,21 @@ function App() {
               <AboutMe />
               <Contact />
             </>
+            // putting main page inside an element(<></>) with empty route to render alone
           }
         />
 
         <Route path="/tictactoe" element={<Tictactoe />} />
         <Route path="/sefactory" element={<Sefactory />} />
         <Route path="/weatherapp" element={<Weatherapp />} />
-
+        {/* projects routes inside main page renders on a page alone */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminHome />} />
           <Route path="projects" element={<AdminProjects />} />
           <Route path="stats" element={<AdminStats />} />
           <Route path="emails" element={<AdminEmails />} />
           <Route path="messages" element={<AdminMessages />} />
+          {/* admin routes */}
         </Route>
       </Routes>
 

@@ -4,9 +4,11 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  // useState for managing and updating the internal state
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents default form submission behavior
     console.log(
+      //returns input info to the console
       `your name:${name} your email:${email} your message:${message}`
     );
   };

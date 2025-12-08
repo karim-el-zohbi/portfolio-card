@@ -9,6 +9,7 @@ const ScrollToTopButton = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
+      // scroll to top 0 smoth behavior function named scrollToTop()
     });
   };
 
@@ -27,6 +28,8 @@ const ScrollToTopButton = () => {
       window.removeEventListener("scroll", checkScrollTop);
     };
   }, [showButton]);
+  // when button showed remove event listener for memory
+  // useEffect used to render a side effect to DOM
 
   return (
     <div className="fixed bottom-4 right-4 z-50">

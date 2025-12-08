@@ -54,6 +54,8 @@ export default function Projects() {
                 </h2>
                 <p className="text-gray-300">{projects[0].desc}</p>
               </div>
+              {/* projects used frameworks section */}
+
               <div className="flex gap-3">
                 <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold  hover:scale-130 transition-transform">
                   React
@@ -75,6 +77,7 @@ export default function Projects() {
                 </h2>
                 <p className="text-gray-300">{projects[1].desc}</p>
               </div>
+              {/* projects used frameworks section */}
               <div className="flex gap-3">
                 <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-130 transition-transform">
                   React
@@ -100,6 +103,8 @@ export default function Projects() {
                   </h2>
                   <p className="text-gray-400">{projects[2].desc}</p>
                 </div>
+                {/* projects used frameworks section */}
+
                 <div className="flex gap-3">
                   <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-130 transition-transform">
                     React
@@ -117,6 +122,7 @@ export default function Projects() {
                   </h2>
                   <p className="text-gray-400">{projects[3].desc}</p>
                 </div>{" "}
+                {/* projects used frameworks section */}
                 <div className="flex gap-3">
                   <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-130 transition-transform">
                     React
