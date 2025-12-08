@@ -1,32 +1,38 @@
 import React, { useState } from "react";
 import { Element } from "react-scroll";
+
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   // useState for managing and updating the internal state
+
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents default form submission behavior
     console.log(
-      //returns input info to the console
-      `your name:${name} your email:${email} your message:${message}`
+      // returns input info to the console
+      `your name: ${name} your email: ${email} your message: ${message}`
     );
   };
 
   return (
     <Element name="contact">
-      <div className="min-h-screen flex items-center justify-center bg-black w-screen">
+      {/* Main contact section */}
+      <div className="min-h-screen flex items-center justify-center bg-black w-full p-4 max-w-[100vw] overflow-x-hidden">
         <form
           onSubmit={handleSubmit}
-          className="bg-black border-2 border-lime-400 p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-96"
+          className="bg-black border-2 border-lime-400 p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md"
         >
-          <h1 className="text-2xl font-bold text-center text-white ">
+          {/* Form Header */}
+          <h1 className="text-2xl font-bold text-center text-white">
             Your Next Project Begins Here
           </h1>
           <p className="text-white text-sm">
-            do you have a challenge that needs a creative solution i'm here
-            helping and listening to make your vision come true
+            Do you have a challenge that needs a creative solution? I'm here
+            helping and listening to make your vision come true.
           </p>
+
+          {/* Name Input */}
           <input
             type="text"
             placeholder="Full Name"
@@ -34,20 +40,26 @@ export default function Contact() {
             onChange={(e) => setName(e.target.value)}
             className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
           />
+
+          {/* Email Input */}
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your Email"
-            className="p-3 rounded-xl border focus:outline-none text-white focus:ring-2 focus:ring-lime-400"
+            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
           />
+
+          {/* Message Textarea */}
           <textarea
-            placeholder="How can i help, just release the idea"
+            placeholder="How can I help? Just release the idea."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-3 rounded-xl border focus:outline-none text-white focus:ring-2 focus:ring-lime-400"
+            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400 resize-none h-32"
           ></textarea>
-          <button className="bg-lime-600 text-white p-3 rounded-xl hover:bg-lime-700 transition-all">
+
+          {/* Submit Button */}
+          <button className="bg-lime-600 text-white p-3 rounded-xl hover:bg-lime-700 transition-all font-bold">
             Send Message
           </button>
         </form>
