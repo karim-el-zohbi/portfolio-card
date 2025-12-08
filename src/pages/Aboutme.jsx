@@ -63,8 +63,10 @@ export default function AboutMe() {
             <div className="flex flex-col gap-2">
               <h2 className="text-3xl text-lime-300">What Are my Techniques</h2>
               <div className="flex flex-wrap gap-6 mt-4">
+                {/* technique.map loops over the array */}
                 {technique.map((t, i) => (
                   <div key={i} className="flex flex-col items-center">
+                    {/* div key{i} for each object inside the array display => */}
                     <div className="w-12 h-12">{t.comp}</div>
                     <p className="text-white mt-2">{t.title}</p>
                   </div>
