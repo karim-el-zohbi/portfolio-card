@@ -18,6 +18,7 @@ import AdminMessages from "./admin-card/admin/pages/AdminMessages";
 import Tictactoe from "./pages/projects/tictactoe";
 import Sefactory from "./pages/projects/sefactory";
 import Weatherapp from "./pages/projects/Weatherapp";
+import ScrollProgress from "./component/ScrollProgress";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           path="/"
           element={
             <>
+              <ScrollProgress />
               <Navbar />
               <Home />
               <Projects />

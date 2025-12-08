@@ -1,7 +1,9 @@
 import React from "react";
 import { Element } from "react-scroll";
+import { useInView } from "react-intersection-observer";
 
 export default function AboutMe() {
+  const [ref, visible] = useInView();
   const technique = [
     {
       title: "React",
@@ -52,7 +54,12 @@ export default function AboutMe() {
 
   return (
     <Element name="aboutme">
-      <div className="w-full max-w-[100vw] min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-black">
+      <div
+        ref={ref}
+        className={` w-full max-w-[100vw] min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-black transition-all duration-700 ease-out transform ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
         {/* Header */}
         <h1 className="text-4xl sm:text-5xl font-bold text-white mt-10 text-center">
           ABOUT ME
