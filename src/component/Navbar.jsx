@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
+import useScrollDirection from "../hooks/useScrollDirection";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // state for mobile menu toggle
-  const [hideNav, setHideNav] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // const [hideNav, setHideNav] = useState(false);
+  // const [lastScrollY, setLastScrollY] = useState(0);
+  const scrollup = useScrollDirection();
 
-  React.useEffect(() => {
-    const controlNavbar = () => {
-      if (window.innerWidth < 768) {
-        if (window.scrollY > lastScrollY) {
-          setHideNav(true); // scrolling down → hide
-        } else {
-          setHideNav(false); // scrolling up → show
-        }
-        setLastScrollY(window.scrollY);
-      }
-    };
+  // React.useEffect(() => {
+  //   const controlNavbar = () => {
+  //     if (window.innerWidth < 768) {
+  //       if (window.scrollY > lastScrollY) {
+  //         setHideNav(true); // scrolling down → hide
+  //       } else {
+  //         setHideNav(false); // scrolling up → show
+  //       }
+  //       setLastScrollY(window.scrollY);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", controlNavbar);
-    return () => window.removeEventListener("scroll", controlNavbar);
-  }, [lastScrollY]);
+  //   window.addEventListener("scroll", controlNavbar);
+  //   return () => window.removeEventListener("scroll", controlNavbar);
+  // }, [lastScrollY]);
 
   return (
     <nav
       className={`opacity-90 bg-black sticky top-0 z-50 text-white border-b-2 border-lime-200 w-full max-w-[100vw] overflow-x-hidden
     transition-transform duration-300
-    ${hideNav ? "-translate-y-full" : "translate-y-0"}
+    ${scrollup ? "-translate-y-full" : "translate-y-0"}
   `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">

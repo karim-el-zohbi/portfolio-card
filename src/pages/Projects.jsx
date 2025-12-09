@@ -1,10 +1,13 @@
 import React from "react";
 import { Element } from "react-scroll";
 import { Link } from "react-router-dom"; // Keep this for linking to project pages
+import { useInView } from "react-intersection-observer";
 
 import Tictactoe from "./projects/tictactoe";
 
 export default function Projects() {
+  const [ref, visible] = useInView();
+
   const projects = [
     {
       title: "Tic-Tac-Toe",
@@ -26,7 +29,12 @@ export default function Projects() {
 
   return (
     <Element name="projects">
-      <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black flex items-center justify-center p-8">
+      <div
+        ref={ref}
+        className={`min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black flex items-center justify-center p-8 transition-all duration-700 ease-out transforms ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
         <div className="max-w-6xl w-full flex flex-col items-center gap-8">
           <h1 className="text-5xl font-bold text-center text-white mb-6">
             My Projects

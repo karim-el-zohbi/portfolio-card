@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { Element } from "react-scroll";
 
 export default function Contact() {
+  const [ref, visible] = useInView();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -18,7 +20,12 @@ export default function Contact() {
   return (
     <Element name="contact">
       {/* Main contact section */}
-      <div className="min-h-screen flex items-center justify-center bg-black w-full p-4 max-w-[100vw] overflow-x-hidden">
+      <div
+        ref={ref}
+        className={`min-h-screen flex items-center justify-center bg-black w-full p-4 max-w-[100vw] overflow-x-hidden transition-all duration-700 ease-out transform ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
         <form
           onSubmit={handleSubmit}
           className="bg-black border-2 border-lime-400 p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md"

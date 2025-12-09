@@ -1,11 +1,19 @@
 import React from "react";
 import { Element } from "react-scroll";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
+  const [ref, visible] = useInView();
+
   return (
     <Element name="home">
       {/* Main Home Section */}
-      <div className="h-screen w-full max-w-[100vw] flex flex-col items-center justify-center bg-black text-white gap-6 px-4 sm:px-8">
+      <div
+        ref={ref}
+        className={`h-screen w-full max-w-[100vw] flex flex-col items-center justify-center bg-black text-white gap-6 px-4 sm:px-8 transition-all duration-700 ease-out transform ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
         {/* Availability badge */}
         <span className="rounded-xl bg-lime-400 hover:bg-lime-200 text-black font-bold p-1 pr-2 pl-2 text-center">
           Available For New Projects
