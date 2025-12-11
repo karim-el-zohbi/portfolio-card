@@ -40,7 +40,7 @@ export default function ScrollProgress() {
       <div className="h-1 w-full bg-black/0">
         <div
           aria-hidden
-          className="h-1 bg-lime-400/90 shadow-[0_0_8px_rgba(132,204,22,0.9)] transition-all duration-150 ease-out"
+          className="h-1 bg-neon shadow-[0_0_8px_rgba(132,204,22,0.9)] transition-all duration-150 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>

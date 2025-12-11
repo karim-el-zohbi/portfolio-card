@@ -20,7 +20,7 @@ export default function ScrollToTop() {
       onClick={goTop}
       className={`
         fixed bottom-6 right-6 z-50
-        bg-lime-400 text-black font-bold p-3 rounded-full shadow-xl
+        bg-neon text-black font-bold p-3 rounded-full shadow-xl
         transition-all duration-300 ease-in-out
 
         ${

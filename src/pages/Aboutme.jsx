@@ -71,7 +71,7 @@ export default function AboutMe() {
           <div className="flex flex-col gap-6 md:w-1/2">
             {/* About description */}
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl text-lime-300">
+              <h2 className="text-2xl sm:text-3xl txt-neon">
                 Building Solutions
               </h2>
               <p className="text-white">
@@ -81,14 +81,14 @@ export default function AboutMe() {
 
             {/* Technique section */}
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl text-lime-300">
+              <h2 className="text-2xl sm:text-3xl txt-neon">
                 What Are My Techniques
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 sm:gap-6 mt-4 justify-items-center w-full">
                 {technique.map((t, i) => (
                   <div
                     key={i}
-                    className="flex flex-col items-center p-2 bg-color border-2 border-lime-300 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-110"
+                    className="flex flex-col items-center p-2 bg-color border-2 brd-neon rounded-lg shadow-md transform transition-transform duration-300 hover:scale-110"
                   >
                     <div>{t.comp}</div>
                     <p className="text-white mt-2 font-semibold text-center">
@@ -101,7 +101,7 @@ export default function AboutMe() {
 
             {/* Outside coding */}
             <div className="flex flex-col gap-2 mt-4">
-              <h2 className="text-2xl sm:text-3xl text-lime-300">
+              <h2 className="text-2xl sm:text-3xl txt-neon">
                 Outside Coding World
               </h2>
               <p className="text-white">I'm really angry</p>

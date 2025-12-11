@@ -28,7 +28,7 @@ export default function Contact() {
       >
         <form
           onSubmit={handleSubmit}
-          className="bg-color border-2 border-lime-400 p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md"
+          className="bg-color border-2 brd-neon p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md"
         >
           {/* Form Header */}
           <h1 className="text-2xl font-bold text-center text-white">
@@ -45,7 +45,7 @@ export default function Contact() {
             placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 ring-neon-focus"
           />
 
           {/* Email Input */}
@@ -54,7 +54,7 @@ export default function Contact() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your Email"
-            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 ring-neon-focus"
           />
 
           {/* Message Textarea */}
@@ -62,11 +62,11 @@ export default function Contact() {
             placeholder="How can I help? Just release the idea."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400 resize-none h-32"
+            className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 ring-neon-focus resize-none h-32"
           ></textarea>
 
           {/* Submit Button */}
-          <button className="bg-lime-600 text-white p-3 rounded-xl hover:bg-lime-700 transition-all font-bold">
+          <button className="bg-neon text-white p-3 rounded-xl hover:bg-neon-300 transition-all font-bold">
             Send Message
           </button>
         </form>

@@ -2,3 +2,25 @@
 .bg-color {
   background-color: rgb(25, 25, 25);
 }
+.bg-neon {
+  background-color: rgb(255, 16, 240, 0.75);
+}
+.bg-neon-hover:hover {
+  background-color: rgb(255, 16, 240, 1);
+}
+.txt-neon {
+  color: rgb(255, 16, 240, 0.75);
+}
+.txt-neon-hover:hover {
+  color: rgb(255, 16, 240, 1);
+}
+.brd-neon {
+  border-color: rgb(255, 16, 240, 0.75);
+}
+.shdw-neon:hover {
+  box-shadow: 0 1px 3px 0 rgba(255, 16, 240, 0.1),
+    0 1px 2px 0 rgba(255, 16, 240, 0.06);
+}
+.ring-neon-focus:focus {
+  --tw-ring-color: rgb(255, 16, 240, 0.75);
+}

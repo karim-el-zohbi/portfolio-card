@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`opacity-90 bg-color sticky top-0 z-50 text-white border-b-2 border-lime-200 w-full max-w-[100vw] overflow-x-hidden
+      className={`opacity-90 bg-color sticky top-0 z-50 text-white border-b-2 brd-neon w-full max-w-[100vw] overflow-x-hidden
     transition-transform duration-300
     ${scrollup ? "-translate-y-full" : "translate-y-0"}
   `}
@@ -38,7 +38,7 @@ export default function Navbar() {
             to="home"
             smooth={true}
             duration={650}
-            className="font-bold text-lime-300 hover:text-lime-400 text-lg"
+            className="font-bold txt-neon txt-neon-hover text-lg"
           >
             PORTFOLIO.DEV
           </Link>
@@ -51,7 +51,7 @@ export default function Navbar() {
             to="home"
             smooth={true}
             duration={650}
-            className="hover:text-lime-400"
+            className="txt-neon-hover"
           >
             Home
           </Link>
@@ -61,7 +61,7 @@ export default function Navbar() {
             to="projects"
             smooth={true}
             duration={650}
-            className="hover:text-lime-400"
+            className="txt-neon-hover"
           >
             Projects
           </Link>
@@ -71,7 +71,7 @@ export default function Navbar() {
             to="aboutme"
             smooth={true}
             duration={650}
-            className="hover:text-lime-400"
+            className="txt-neon-hover"
           >
             About Me
           </Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
             to="contact"
             smooth={true}
             duration={650}
-            className="hover:text-lime-400"
+            className="txt-neon-hover"
           >
             Contact
           </Link>
@@ -92,7 +92,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-lime-300 hover:text-lime-400 focus:outline-none"
+            className="txt-neon txt-neon-hover focus:outline-none"
           >
             {isOpen ? "✖" : "☰"}
             {/* Toggle button: hamburger (☰) or close (✖) */}
@@ -102,13 +102,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-black px-4 pb-4 space-y-2 text-center font-bold">
+        <div className="md:hidden bg-color px-4 pb-4 space-y-2 text-center font-bold">
           <Link
             to="home"
             smooth={true}
             duration={650}
             offset={-100}
-            className="block hover:text-lime-400"
+            className="block txt-neon-hover"
             onClick={() => setIsOpen(false)}
           >
             Home
@@ -120,7 +120,7 @@ export default function Navbar() {
             smooth={true}
             duration={650}
             offset={-100}
-            className="block hover:text-lime-400"
+            className="block txt-neon-hover"
             onClick={() => setIsOpen(false)}
           >
             Projects
@@ -132,7 +132,7 @@ export default function Navbar() {
             smooth={true}
             duration={650}
             offset={-100}
-            className="block hover:text-lime-400"
+            className="block txt-neon-hover"
             onClick={() => setIsOpen(false)}
           >
             About Me
@@ -144,7 +144,7 @@ export default function Navbar() {
             smooth={true}
             duration={650}
             offset={-100}
-            className="block hover:text-lime-400"
+            className="block txt-neon-hover"
             onClick={() => setIsOpen(false)}
           >
             Contact

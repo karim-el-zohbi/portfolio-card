@@ -15,7 +15,7 @@ export default function Home() {
         }`}
       >
         {/* Availability badge */}
-        <span className="rounded-xl bg-lime-400 hover:bg-lime-200 text-black font-bold p-1 pr-2 pl-2 text-center">
+        <span className="rounded-xl bg-neon bg-neon-hover text-black font-bold p-1 pr-2 pl-2 text-center">
           Available For New Projects
         </span>
 
