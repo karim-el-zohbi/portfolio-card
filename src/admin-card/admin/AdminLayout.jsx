@@ -1,23 +1,41 @@
 import { Outlet } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import AdminSidebar from "./Sidebar";
 import { useInView } from "react-intersection-observer";
 
 export default function AdminLayout() {
   const [ref, visible] = useInView();
+  const [sidebarOpen, setSidebarOpen] = useState(false); // toggle for mobile
+
   return (
     <div
       ref={ref}
-      className={`flex transition-all duration-700 ease-out transforms ${
+      className={`flex transition-all duration-700 ease-out transform ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      } min-h-screen relative`}
     >
-      <AdminSidebar />
+      {/* Sidebar */}
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        onLinkClick={() => setSidebarOpen(false)} // closes sidebar on click
+        className={`fixed z-50 top-0 left-0 h-full bg-color transition-transform duration-300 transform
+        md:relative md:translate-x-0
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+      />
 
-      {/* Child admin pages render here */}
-      <div className="flex-1 p-6">
+      {/* Mobile toggle button */}
+      <button
+        className={`md:hidden fixed top-4 z-60 bg-neon p-2 rounded-md shadow-lg
+        transition-all duration-300 ease-out
+        ${sidebarOpen ? "left-50" : "left-4"}`} // moves button when sidebar opens
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? "✖" : "☰"}
+      </button>
+
+      {/* Main content */}
+      <div className="flex-1 p-6 md:ml-64">
         <Outlet />
-        {/* renders the AdminSidebar childs inside the page */}
       </div>
     </div>
   );

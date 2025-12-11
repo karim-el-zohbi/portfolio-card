@@ -9,7 +9,9 @@ export default function AdminProjects() {
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      <h1 className="text-3xl font-bold txt-neon mb-6">Manage Projects</h1>
+      <h1 className="text-3xl text-center font-bold txt-neon mb-6">
+        Manage Projects
+      </h1>
 
       <div className="space-y-4">
         <div className="bg-color border-2 brd-neon p-4 rounded-xl flex justify-between">

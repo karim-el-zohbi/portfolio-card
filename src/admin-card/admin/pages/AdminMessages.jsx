@@ -10,7 +10,7 @@ export default function AdminMessages() {
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      <h1 className="text-3xl font-bold txt-neon mb-6">Messages</h1>
+      <h1 className="text-3xl text-center font-bold txt-neon mb-6">Messages</h1>
 
       <div className="bg-color border-2 brd-neon p-6 rounded-xl">
         <p className="text-gray-300">User messages will appear here...</p>

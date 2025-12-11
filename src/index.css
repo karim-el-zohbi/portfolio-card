@@ -30,6 +30,9 @@
 .txt-prjt-apps {
   color: aliceblue;
 }
+.txt-black-hover:hover {
+  color: black;
+}
 .brd-r-neon {
   border-color: rgb(77, 77, 255, 0.75);
 }
