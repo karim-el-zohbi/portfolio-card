@@ -1,6 +1,6 @@
 @import "tailwindcss";
 .bg-color {
-  background-color: #27272a;
+  background-color: black;
 }
 .bg-neon {
   background-color: rgb(77, 77, 255, 0.75);
@@ -29,4 +29,10 @@
 }
 .txt-prjt-apps {
   color: aliceblue;
+}
+.brd-r-neon {
+  border-color: rgb(77, 77, 255, 0.75);
+}
+.btn-neon-hover:hover {
+  background-color: rgb(77, 77, 255, 1);
 }

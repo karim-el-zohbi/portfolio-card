@@ -19,7 +19,7 @@ export default function Home() {
           to="contact"
           smooth={true}
           duration={650}
-          offset={100}
+          offset={10}
           className="rounded-xl bg-neon bg-neon-hover text-black font-bold p-1 pr-2 pl-2 text-center"
         >
           Available For New Projects

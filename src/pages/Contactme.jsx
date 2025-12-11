@@ -66,7 +66,7 @@ export default function Contact() {
           ></textarea>
 
           {/* Submit Button */}
-          <button className="bg-neon text-white p-3 rounded-xl hover:bg-neon-300 transition-all font-bold">
+          <button className="bg-neon text-white p-3 rounded-xl btn-neon-hover transition-all font-bold">
             Send Message
           </button>
         </form>

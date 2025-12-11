@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 h-screen bg-black border-r-2 border-r-lime-400 text-white p-4">
+    <aside className="w-64 h-screen bg-color border-r-2 brd-r-neon text-white p-4">
       {/* for a sidebar nav */}
       <h2 className="text-xl font-bold mb-4">Admin</h2>
 
