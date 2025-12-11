@@ -56,7 +56,7 @@ export default function AboutMe() {
     <Element name="aboutme">
       <div
         ref={ref}
-        className={` w-full max-w-[100vw] min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-black transition-all duration-700 ease-out transform ${
+        className={` w-full max-w-[100vw] min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-color transition-all duration-700 ease-out transform ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -88,7 +88,7 @@ export default function AboutMe() {
                 {technique.map((t, i) => (
                   <div
                     key={i}
-                    className="flex flex-col items-center p-2 bg-black border-2 border-lime-300 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-110"
+                    className="flex flex-col items-center p-2 bg-color border-2 border-lime-300 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-110"
                   >
                     <div>{t.comp}</div>
                     <p className="text-white mt-2 font-semibold text-center">

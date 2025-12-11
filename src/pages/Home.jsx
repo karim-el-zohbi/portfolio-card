@@ -10,7 +10,7 @@ export default function Home() {
       {/* Main Home Section */}
       <div
         ref={ref}
-        className={`h-screen w-full max-w-[100vw] flex flex-col items-center justify-center bg-black text-white gap-6 px-4 sm:px-8 transition-all duration-700 ease-out transform ${
+        className={`h-screen w-full max-w-[100vw] flex flex-col items-center justify-center bg-color text-white gap-6 px-4 sm:px-8 transition-all duration-700 ease-out transform ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >

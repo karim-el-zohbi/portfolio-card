@@ -7,7 +7,7 @@ export default function Footer() {
     // Main footer container
     <div
       ref={ref}
-      className={`flex flex-col w-full max-w-[100vw] overflow-x-hidden border-t-2 border-lime-300 bg-black transition-all duration-700 ease-out transform ${
+      className={`flex flex-col w-full max-w-[100vw] overflow-x-hidden border-t-2 border-lime-300 bg-color transition-all duration-700 ease-out transform ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
       }`}
     >

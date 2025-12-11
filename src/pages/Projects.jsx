@@ -31,7 +31,7 @@ export default function Projects() {
     <Element name="projects">
       <div
         ref={ref}
-        className={`min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black flex items-center justify-center p-8 transition-all duration-700 ease-out transforms ${
+        className={`min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-color flex items-center justify-center p-8 transition-all duration-700 ease-out transforms ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -45,7 +45,7 @@ export default function Projects() {
             {/* LEFT MAIN — projects[0] */}
             <Link
               to="/tictactoe"
-              className="bg-black p-6 border-2 border-lime-300 rounded-xl shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between sm:row-span-3"
+              className="bg-color p-6 border-2 border-lime-300 rounded-xl shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between sm:row-span-3"
             >
               <div>
                 <h2 className="text-xl text-white font-bold">
@@ -67,7 +67,7 @@ export default function Projects() {
             {/* RIGHT MAIN — projects[1] */}
             <Link
               to="/sefactory"
-              className="bg-black border-2 rounded-xl border-lime-300 p-6 shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between sm:col-span-2"
+              className="bg-color border-2 rounded-xl border-lime-300 p-6 shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between sm:col-span-2"
             >
               <div>
                 <h2 className="text-xl text-white font-bold">
@@ -93,7 +93,7 @@ export default function Projects() {
             {projects.slice(2).map((proj, i) => (
               <div
                 key={i}
-                className="p-6 bg-black border-2 rounded-xl border-lime-300 shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between"
+                className="p-6 bg-color border-2 rounded-xl border-lime-300 shadow-md hover:shadow-lime-300 hover:scale-105 transition-transform flex flex-col justify-between"
               >
                 <div>
                   <h2 className="text-xl text-white font-bold">{proj.title}</h2>
