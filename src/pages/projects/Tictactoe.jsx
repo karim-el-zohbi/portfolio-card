@@ -1,33 +1,26 @@
 import React from "react";
+import { useInView } from "react-intersection-observer";
 export default function Tictactoe() {
+  const [ref, visible] = useInView();
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black w-screen">
-      <form className="bg-black border-2 border-lime-400 p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-96">
-        <h1 className="text-2xl font-bold text-center text-white ">
-          Your Next Project Begins Here
+    <div
+      ref={ref}
+      className={`min-h-screen flex items-center justify-center bg-color w-screen transition-all duration-700 ease-out transforms  ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <div className="bg-color border-2 brd-neon p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-96 hover:scale-105 transition-transform">
+        <h1 className="text-3xl font-bold text-center txt-neon txt-neon-hover">
+          Tic Tac Toe
         </h1>
-        <p className="text-white text-sm">
-          do you have a challenge that needs a creative solution i'm here
-          helping and listening to make your vision come true
+        <p className="text-white ">
+          This Tic-Tac-Toe project delivers a smooth, responsive gameplay
+          experience powered by clean, well-structured JavaScript. The
+          neon-themed UI adds a modern, energetic vibe that makes each move feel
+          electric. Simple logic, sharp design, and a polished finish—proof that
+          even classic games can glow with style.
         </p>
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="p-3 rounded-xl border text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="p-3 rounded-xl border focus:outline-none text-white focus:ring-2 focus:ring-lime-400"
-        />
-        <textarea
-          placeholder="How can i help, just release the idea"
-          className="p-3 rounded-xl border focus:outline-none text-white focus:ring-2 focus:ring-lime-400"
-        ></textarea>
-        <button className="bg-lime-600 text-white p-3 rounded-xl hover:bg-lime-700 transition-all">
-          Send Message
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

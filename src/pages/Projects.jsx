@@ -22,8 +22,8 @@ export default function Projects() {
       desc: "Building a web app that interacts with API's",
     },
     {
-      title: "bla bla App",
-      desc: "Building a web app that interacts with API's",
+      title: "Portfolio Web",
+      desc: "Modern Design With UI/UX Using Tailwinnd CSS and React",
     },
   ];
 
@@ -55,10 +55,7 @@ export default function Projects() {
               </div>
               {/* projects used frameworks section */}
               <div className="flex gap-3 flex-wrap mt-2">
-                <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
-                  React
-                </p>
-                <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
                   JavaScript
                 </p>
               </div>
@@ -77,11 +74,14 @@ export default function Projects() {
               </div>
               {/* projects used frameworks section */}
               <div className="flex gap-3 flex-wrap mt-2">
-                <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
-                  React
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  HTML
                 </p>
-                <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
                   JavaScript
+                </p>
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  CSS
                 </p>
               </div>
             </Link>
@@ -90,26 +90,48 @@ export default function Projects() {
             <div className="col-span-1 sm:col-span-2"></div>
 
             {/* FOOTERS using last 2 items */}
-            {projects.slice(2).map((proj, i) => (
-              <div
-                key={i}
-                className="p-6 bg-color border-2 rounded-xl brd-neon shadow-md shdw-neon hover:scale-105 transition-transform flex flex-col justify-between"
-              >
-                <div>
-                  <h2 className="text-xl text-white font-bold">{proj.title}</h2>
-                  <p className="text-gray-400">{proj.desc}</p>
-                </div>
-                {/* projects used frameworks section */}
-                <div className="flex gap-3 flex-wrap mt-2">
-                  <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
-                    React
-                  </p>
-                  <p className="bg-gray-800 text-gray-400 rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
-                    JavaScript
-                  </p>
-                </div>
+            {/* {projects.slice(2).map((proj, i) => ( */}
+            <Link
+              to="/weatherapp"
+              className="p-6 bg-color border-2 rounded-xl brd-neon shadow-md shdw-neon hover:scale-105 transition-transform flex flex-col justify-between"
+            >
+              <div>
+                <h2 className="text-xl text-white font-bold">
+                  {projects[2].title}
+                </h2>
+                <p className="text-gray-400">{projects[2].desc}</p>
               </div>
-            ))}
+              {/* projects used frameworks section */}
+              <div className="flex gap-3 flex-wrap mt-2">
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  React
+                </p>
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  TailwindCSS
+                </p>
+              </div>
+            </Link>
+            <Link
+              to="/portfolioweb"
+              className="p-6 bg-color border-2 rounded-xl brd-neon shadow-md shdw-neon hover:scale-105 transition-transform flex flex-col justify-between"
+            >
+              <div>
+                <h2 className="text-xl text-white font-bold">
+                  {projects[3].title}
+                </h2>
+                <p className="text-gray-400">{projects[3].desc}</p>
+              </div>
+              {/* projects used frameworks section */}
+              <div className="flex gap-3 flex-wrap mt-2">
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  React
+                </p>
+                <p className="bg-prjt-apps txt-prjt-apps rounded-md text-center w-fit p-1 text-sm font-bold hover:scale-110 transition-transform">
+                  TailwindCSS
+                </p>
+              </div>
+            </Link>
+            {/* ))} */}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 .bg-color {
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(0, 0, 0);
 }
 .bg-neon {
   background-color: rgb(255, 16, 240, 0.75);
@@ -23,4 +23,10 @@
 }
 .ring-neon-focus:focus {
   --tw-ring-color: rgb(255, 16, 240, 0.75);
+}
+.bg-prjt-apps {
+  background-color: #1f2937;
+}
+.txt-prjt-apps {
+  color: aliceblue;
 }

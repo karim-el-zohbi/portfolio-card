@@ -19,6 +19,7 @@ import Tictactoe from "./pages/projects/tictactoe";
 import Sefactory from "./pages/projects/sefactory";
 import Weatherapp from "./pages/projects/Weatherapp";
 import ScrollProgress from "./component/ScrollProgress";
+import Portfolioweb from "./pages/projects/portfolioweb";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/tictactoe" element={<Tictactoe />} />
         <Route path="/sefactory" element={<Sefactory />} />
         <Route path="/weatherapp" element={<Weatherapp />} />
+        <Route path="/portfolioweb" element={<Portfolioweb />} />
         {/* projects routes inside main page renders on a page alone */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminHome />} />

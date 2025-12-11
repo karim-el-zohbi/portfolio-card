@@ -1,5 +1,5 @@
 import React from "react";
-import { Element } from "react-scroll";
+import { Element, Link } from "react-scroll";
 import { useInView } from "react-intersection-observer";
 
 export default function Home() {
@@ -15,9 +15,15 @@ export default function Home() {
         }`}
       >
         {/* Availability badge */}
-        <span className="rounded-xl bg-neon bg-neon-hover text-black font-bold p-1 pr-2 pl-2 text-center">
+        <Link
+          to="contact"
+          smooth={true}
+          duration={650}
+          offset={100}
+          className="rounded-xl bg-neon bg-neon-hover text-black font-bold p-1 pr-2 pl-2 text-center"
+        >
           Available For New Projects
-        </span>
+        </Link>
 
         {/* Main heading */}
         <h1 className="font-bold text-4xl sm:text-5xl text-center leading-snug">
@@ -34,9 +40,15 @@ export default function Home() {
         </p>
 
         {/* Button */}
-        <button className="bg-yellow-700 hover:bg-yellow-500 rounded-2xl p-2 px-4 text-sm sm:text-base font-bold">
+        <Link
+          to="projects"
+          smooth={true}
+          duration={650}
+          offset={-50}
+          className="bg-yellow-700 hover:bg-yellow-500 rounded-2xl p-2 px-4 text-sm sm:text-base font-bold"
+        >
           MY PROJECTS
-        </button>
+        </Link>
       </div>
     </Element>
   );

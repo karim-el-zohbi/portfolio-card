@@ -75,7 +75,8 @@ export default function AboutMe() {
                 Building Solutions
               </h2>
               <p className="text-white">
-                Software and app developer — shame on you, wazzzzzzup!
+                I turn challenges into simple, powerful solutions through
+                thoughtful design and development.
               </p>
             </div>
 
@@ -104,7 +105,10 @@ export default function AboutMe() {
               <h2 className="text-2xl sm:text-3xl txt-neon">
                 Outside Coding World
               </h2>
-              <p className="text-white">I'm really angry</p>
+              <p className="text-white">
+                I bring creativity, communication, and a problem-solving mindset
+                to everything I do.
+              </p>
             </div>
           </div>
 
