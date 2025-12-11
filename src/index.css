@@ -1,28 +1,32 @@
 @import "tailwindcss";
+
+body {
+  overflow-x: hidden;
+}
 .bg-color {
   background-color: black;
 }
 .bg-neon {
-  background-color: rgb(77, 77, 255, 0.75);
+  background-color: rgb(255, 49, 49, 0.75);
 }
 .bg-neon-hover:hover {
-  background-color: rgb(77, 77, 255, 1);
+  background-color: rgb(255, 49, 49, 1);
 }
 .txt-neon {
-  color: rgb(77, 77, 255, 0.75);
+  color: rgb(255, 49, 49, 0.75);
 }
 .txt-neon-hover:hover {
-  color: rgb(77, 77, 255, 1);
+  color: rgb(255, 49, 49, 1);
 }
 .brd-neon {
-  border-color: rgb(77, 77, 255, 0.75);
+  border-color: rgb(255, 49, 49, 0.75);
 }
 .shdw-neon:hover {
-  box-shadow: 0 1px 3px 0 rgba(77, 77, 255, 0.1),
-    0 1px 2px 0 rgba(77, 77, 255, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(255, 49, 49, 0.1),
+    0 1px 2px 0 rgba(255, 49, 49, 0.06);
 }
 .ring-neon-focus:focus {
-  --tw-ring-color: rgb(77, 77, 255, 0.75);
+  --tw-ring-color: rgb(255, 49, 49, 0.75);
 }
 .bg-prjt-apps {
   background-color: #1f2937;
@@ -34,8 +38,8 @@
   color: black;
 }
 .brd-r-neon {
-  border-color: rgb(77, 77, 255, 0.75);
+  border-color: rgb(255, 49, 49, 0.75);
 }
 .btn-neon-hover:hover {
-  background-color: rgb(77, 77, 255, 1);
+  background-color: rgb(255, 49, 49, 1);
 }

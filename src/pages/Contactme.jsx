@@ -22,13 +22,13 @@ export default function Contact() {
       {/* Main contact section */}
       <div
         ref={ref}
-        className={`min-h-screen flex items-center justify-center bg-color w-full p-4 max-w-[100vw] overflow-x-hidden transition-all duration-700 ease-out transform ${
+        className={`min-h-screen flex items-center justify-center bg-color w-full p-4 overflow-x-hidden transition-all duration-700 ease-out transform ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
         <form
           onSubmit={handleSubmit}
-          className="bg-color border-2 brd-neon p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md"
+          className="bg-color border-2 brd-neon p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col gap-3 w-full max-w-md "
         >
           {/* Form Header */}
           <h1 className="text-2xl font-bold text-center text-white">

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function AdminHome() {
   const [ref, visible] = useInView({ triggerOnce: true });
+  // for transition onload
 
   return (
     <div

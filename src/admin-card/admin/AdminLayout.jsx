@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 export default function AdminLayout() {
   const [ref, visible] = useInView();
+  // for transition onload
   const [sidebarOpen, setSidebarOpen] = useState(false); // toggle for mobile
 
   return (
@@ -32,6 +33,13 @@ export default function AdminLayout() {
       >
         {sidebarOpen ? "✖" : "☰"}
       </button>
+      {/* Overlay for mobile when sidebar open */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-color/50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        ></div>
+      )}
 
       {/* Main content */}
       <div className="flex-1 p-6 md:ml-64">

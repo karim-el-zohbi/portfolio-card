@@ -74,7 +74,7 @@ export default function AboutMe() {
               <h2 className="text-2xl sm:text-3xl txt-neon">
                 Building Solutions
               </h2>
-              <p className="text-white">
+              <p className="text-white px-2 md:text-[8px]">
                 I turn challenges into simple, powerful solutions through
                 thoughtful design and development.
               </p>
@@ -105,7 +105,7 @@ export default function AboutMe() {
               <h2 className="text-2xl sm:text-3xl txt-neon">
                 Outside Coding World
               </h2>
-              <p className="text-white">
+              <p className="text-white px-2 md:text-[8px]">
                 I bring creativity, communication, and a problem-solving mindset
                 to everything I do.
               </p>
