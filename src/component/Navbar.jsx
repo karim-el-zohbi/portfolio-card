@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`opacity-90 bg-color sticky top-0 z-50 text-white border-b-2 brd-neon overflow-x-hidden
+      className={`opacity-90 bg-color sticky top-0 z-50 text-white border-b-2 brd-neon w-full  overflow-x-hidden
     transition-transform duration-300
     ${scrollup ? "translate-y-0" : "-translate-y-full"}
   `}

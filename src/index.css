@@ -1,45 +1,68 @@
 @import "tailwindcss";
 
+:root {
+  --neon: rgba(180, 99, 255, 0.75); /* main neon color */
+  --neon-full: rgba(180, 99, 255, 1); /* full intensity color */
+}
+
 body {
   overflow-x: hidden;
 }
+
+/* Backgrounds */
 .bg-color {
   background-color: black;
 }
+
 .bg-neon {
-  background-color: rgb(255, 49, 49, 0.75);
+  background-color: var(--neon);
 }
+
 .bg-neon-hover:hover {
-  background-color: rgb(255, 49, 49, 1);
+  background-color: var(--neon-full);
 }
+
+/* Text */
 .txt-neon {
-  color: rgb(255, 49, 49, 0.75);
+  color: var(--neon);
 }
+
 .txt-neon-hover:hover {
-  color: rgb(255, 49, 49, 1);
+  color: var(--neon-full);
 }
-.brd-neon {
-  border-color: rgb(255, 49, 49, 0.75);
+
+/* Borders */
+.brd-neon,
+.brd-r-neon {
+  border-color: var(--neon);
 }
+
+/* Shadow */
 .shdw-neon:hover {
-  box-shadow: 0 1px 3px 0 rgba(255, 49, 49, 0.1),
-    0 1px 2px 0 rgba(255, 49, 49, 0.06);
+  box-shadow: 0 1px 3px 0 color-mix(in srgb, var(--neon) 10%, transparent),
+    0 1px 2px 0 color-mix(in srgb, var(--neon) 6%, transparent);
 }
+
+/* Ring Focus */
 .ring-neon-focus:focus {
-  --tw-ring-color: rgb(255, 49, 49, 0.75);
+  --tw-ring-color: var(--neon);
 }
+
+/* Project App Colors */
 .bg-prjt-apps {
   background-color: #1f2937;
 }
+
 .txt-prjt-apps {
   color: aliceblue;
 }
+
+/* Hover Black */
 .txt-black-hover:hover {
   color: black;
 }
-.brd-r-neon {
-  border-color: rgb(255, 49, 49, 0.75);
-}
+
+/* Button Hover */
 .btn-neon-hover:hover {
-  background-color: rgb(255, 49, 49, 1);
+  background-color: var(--neon-full);
 }

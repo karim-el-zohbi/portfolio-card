@@ -22,7 +22,7 @@ export default function Contact() {
       {/* Main contact section */}
       <div
         ref={ref}
-        className={`min-h-screen flex items-center justify-center bg-color w-full p-4 overflow-x-hidden transition-all duration-700 ease-out transform ${
+        className={`min-h-screen flex flex-col items-center justify-center bg-color w-full p-4 overflow-x-hidden transition-all duration-700 ease-out transform ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -70,6 +70,29 @@ export default function Contact() {
             Send Message
           </button>
         </form>
+        <div className="flex justify-center gap-5 mt-10 text-gray-400 ">
+          <a
+            href="www.linkedin.com/in/karim-al-zohbi-65aa30296"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/karim-el-zohbi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
+          <a
+            href="mailto:karimalzohbi@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Email
+          </a>
+        </div>
       </div>
     </Element>
   );

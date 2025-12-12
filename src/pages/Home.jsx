@@ -45,7 +45,7 @@ export default function Home() {
           smooth={true}
           duration={650}
           offset={-50}
-          className="bg-yellow-700 hover:bg-yellow-500 rounded-2xl p-2 px-4 text-sm sm:text-base font-bold"
+          className="bg-neon bg-neon-hover rounded-2xl p-2 px-4 text-sm sm:text-base font-bold"
         >
           MY PROJECTS
         </Link>
