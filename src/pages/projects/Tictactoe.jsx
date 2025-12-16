@@ -5,7 +5,7 @@ export default function Tictactoe() {
   return (
     <div
       ref={ref}
-      className={`min-h-screen flex items-center justify-center bg-color w-screen transition-all duration-700 ease-out transforms  ${
+      className={`min-h-screen flex flex-col items-center justify-center bg-color w-screen transition-all duration-700 ease-out transforms  ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
@@ -20,6 +20,15 @@ export default function Tictactoe() {
           electric. Simple logic, sharp design, and a polished finish—proof that
           even classic games can glow with style.
         </p>
+      </div>
+      <div className="flex justify-center gap-5 mt-10 text-gray-400 ">
+        <a
+          href="https://github.com/karim-el-zohbi/tic-tac-toe.git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Project.repo
+        </a>
       </div>
     </div>
   );
