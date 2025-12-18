@@ -9,7 +9,7 @@ async function createMessage(req, res) {
         .json({ error: "name, email and message required" });
     }
     const doc = await Message.create({ name, email, message });
-    return res.status(201).json(doc);
+    return res.status(200).json(doc);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "server error" });

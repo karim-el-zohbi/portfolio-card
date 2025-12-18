@@ -1,22 +1,38 @@
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Element } from "react-scroll";
+import axios from "axios";
 
 export default function Contact() {
   const [ref, visible] = useInView();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isSent, setIsSent] = useState(false);
+  const [isError, setIsError] = useState(false);
   // useState for managing and updating the internal state
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevents default form submission behavior
     console.log(
       // returns input info to the console
       `your name: ${name} your email: ${email} your message: ${message}`
     );
+    const response = await axios.post("http://localhost:4000/api/messages", {
+      name,
+      email,
+      message,
+    });
+    console.log(response);
+    if (response.status == 201) {
+      setIsSent(true);
+    } else setIsError(true);
   };
-
+  if (isSent) {
+    return (
+      <div className="bg-green-500 text-xl font-bold txt-neon">Succeed</div>
+    );
+  }
   return (
     <Element name="contact">
       {/* Main contact section */}
@@ -70,6 +86,11 @@ export default function Contact() {
             Send Message
           </button>
         </form>
+        {!!isError && (
+          <div className="flex justify-center gap-5 mt-10 text-gray-400 bg-red-500">
+            something went wrong
+          </div>
+        )}
         <div className="flex justify-center gap-5 mt-10 text-gray-400 ">
           <a
             href="www.linkedin.com/in/karim-al-zohbi-65aa30296"
