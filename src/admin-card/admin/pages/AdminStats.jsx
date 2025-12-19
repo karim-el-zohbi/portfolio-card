@@ -1,7 +1,10 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-export default function AdminStats() {
+import axios from "axios";
+
+export default async function AdminStats() {
   const [ref, visible] = useInView();
+  const stats = (await axios.get("http://localhost:4000/api/stats")).data;
   return (
     <div
       ref={ref}

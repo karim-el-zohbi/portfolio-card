@@ -1,7 +1,13 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-export default function AdminProjects() {
+import axios from "axios";
+
+export default async function AdminProjects() {
   const [ref, visible] = useInView();
+  const { data } = await axios.get("http://localhost:4000/api/projects");
+  await axios.post("http://localhost:4000/api/projects", projectData, {
+    header: { "x-admin-key": "helloworld!" },
+  });
   return (
     <div
       ref={ref}
