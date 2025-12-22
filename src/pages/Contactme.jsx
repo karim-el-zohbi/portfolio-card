@@ -28,11 +28,7 @@ export default function Contact() {
       setIsSent(true);
     } else setIsError(true);
   };
-  if (isSent) {
-    return (
-      <div className="bg-green-500 text-xl font-bold txt-neon">Succeed</div>
-    );
-  }
+
   return (
     <Element name="contact">
       {/* Main contact section */}
@@ -89,6 +85,11 @@ export default function Contact() {
         {!!isError && (
           <div className="flex justify-center gap-5 mt-10 text-gray-400 bg-red-500">
             something went wrong
+          </div>
+        )}
+        {isSent && (
+          <div className="bg-green-500 text-xl font-bold txt-neon ">
+            Succeed
           </div>
         )}
         <div className="flex justify-center gap-5 mt-10 text-gray-400 ">
