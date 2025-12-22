@@ -1,17 +1,20 @@
-require("dotenv").config();
-const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
-const rateLimit = require("express-rate-limit");
-const connectDB = require("./config/db");
+import express from "express";
+import dotenv from "dotenv";
+import helmet from "helmet";
+import cors from "cors";
+import rateLimit from "express-rate-limit";
 
-const messagesRoutes = require("./routes/messages");
-const projectsRoutes = require("./routes/projects");
-const statsRoutes = require("./routes/stats");
+import connectDB from "./config/db.js";
+import projectsRoutes from "./routes/projects.js";
+import messagesRoutes from "./routes/messages.js";
+import statsRoutes from "./routes/stats.js";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// connect database
 connectDB(process.env.MONGO_URI);
 
 // security + parsing
@@ -20,7 +23,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: true }));
 
-// rate limiter for public endpoints
+// rate limiter
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 120,
@@ -28,11 +31,15 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // routes
-app.use("/api/messages", messagesRoutes);
 app.use("/api/projects", projectsRoutes);
+app.use("/api/messages", messagesRoutes);
 app.use("/api/stats", statsRoutes);
 
-// health
-app.get("/health", (req, res) => res.json({ ok: true }));
+// health check
+app.get("/health", (req, res) => {
+  res.json({ ok: true });
+});
 
-app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

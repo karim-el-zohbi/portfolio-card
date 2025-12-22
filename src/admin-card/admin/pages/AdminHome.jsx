@@ -6,6 +6,7 @@ import axios from "axios";
 export default function AdminHome() {
   const [ref, visible] = useInView();
   const [messageCount, setMessageCount] = useState(0);
+  const [projectCount, setProjectCount] = useState(0);
 
   useEffect(() => {
     async function fetchMessagesCount() {
@@ -13,6 +14,7 @@ export default function AdminHome() {
         const res = await axios.get("http://localhost:4000/api/messages", {
           headers: { "x-admin-key": "helloworld!" },
         });
+
         setMessageCount(res.data.length);
       } catch (err) {
         console.error("Failed to fetch message count", err);
@@ -21,7 +23,12 @@ export default function AdminHome() {
 
     fetchMessagesCount();
   }, []);
-
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/projects")
+      .then((res) => setProjectCount(res.data.length))
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <div
       ref={ref}
@@ -37,7 +44,7 @@ export default function AdminHome() {
           className="bg-color border-2 brd-neon p-6 rounded-xl shdw-neon hover:scale-105 transition-transform"
         >
           <h2 className="text-xl font-bold text-white">Total Projects</h2>
-          <p className="text-gray-400 text-4xl mt-4">12</p>
+          <p className="text-gray-400 text-4xl mt-4">{projectCount}</p>
         </NavLink>
 
         <NavLink
