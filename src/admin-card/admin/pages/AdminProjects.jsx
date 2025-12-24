@@ -40,17 +40,19 @@ export default function AdminProjects() {
     });
   };
 
-  // SAVE EDIT
   const saveEdit = async (id) => {
     try {
       const res = await axios.put(
         `http://localhost:4000/api/projects/${id}`,
         formData,
         {
-          adminHeaders,
+          headers: {
+            "x-admin-key": "helloworld!",
+          },
         }
       );
 
+      // update local state with new project data
       setProjects((prev) => prev.map((p) => (p._id === id ? res.data : p)));
 
       setEditingId(null);
@@ -58,6 +60,7 @@ export default function AdminProjects() {
       console.error("Update failed", err);
     }
   };
+
   const addProject = async () => {
     try {
       const res = await axios.post(

@@ -42,7 +42,7 @@ export const createProject = async (req, res) => {
 // UPDATE project
 export const updateProject = async (req, res) => {
   try {
-    const { title, desc } = req.body;
+    const { title, desc, slug, tech } = req.body;
 
     const updated = await Project.findByIdAndUpdate(
       req.params.id,
@@ -50,6 +50,8 @@ export const updateProject = async (req, res) => {
         title,
         desc,
         slug: slugify(title, { lower: true, strict: true }),
+        slug,
+        tech,
       },
       { new: true }
     );
