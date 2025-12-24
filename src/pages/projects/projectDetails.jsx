@@ -54,7 +54,7 @@ export default function ProjectDetails() {
           {project.title}
         </h1>
 
-        <p className="text-white">{project.longDesc}</p>
+        <p className="text-white">{project.desc}</p>
 
         {/* Tech stack */}
         {project.tech?.length > 0 && (

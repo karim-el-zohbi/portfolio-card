@@ -7,6 +7,9 @@ export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({ title: "", desc: "" });
+  const adminHeaders = {
+    headers: { "x-admin-key": "helloworld!" },
+  };
 
   // FETCH PROJECTS
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function AdminProjects() {
         `http://localhost:4000/api/projects/${id}`,
         formData,
         {
-          headers: { "x-admin-key": "helloworld!" },
+          adminHeaders,
         }
       );
 
@@ -43,6 +46,36 @@ export default function AdminProjects() {
       setEditingId(null);
     } catch (err) {
       console.error("Update failed", err);
+    }
+  };
+  const addProject = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/projects",
+        {
+          title: "New Project",
+          desc: "Project description",
+        },
+        adminHeaders
+      );
+
+      setProjects((prev) => [...prev, res.data]);
+    } catch (err) {
+      console.error("Create failed", err);
+    }
+  };
+  const deleteProject = async (id) => {
+    if (!confirm("Delete this project?")) return;
+
+    try {
+      await axios.delete(
+        `http://localhost:4000/api/projects/${id}`,
+        adminHeaders
+      );
+
+      setProjects((prev) => prev.filter((p) => p._id !== id));
+    } catch (err) {
+      console.error("Delete failed", err);
     }
   };
 
@@ -56,6 +89,12 @@ export default function AdminProjects() {
       <h1 className="text-3xl text-center font-bold txt-neon mb-6">
         Manage Projects
       </h1>
+      <button
+        onClick={addProject}
+        className="bg-neon px-6 py-2 rounded font-bold mb-6"
+      >
+        + Add Project
+      </button>
 
       <div className="space-y-4">
         {projects.map((project) => (
@@ -104,6 +143,12 @@ export default function AdminProjects() {
                   className="txt-neon hover:text-white font-bold"
                 >
                   Edit
+                </button>
+                <button
+                  onClick={() => deleteProject(project._id)}
+                  className="text-red-500 hover:text-red-300 ml-4 font-bold"
+                >
+                  Delete
                 </button>
               </div>
             )}

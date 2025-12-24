@@ -45,7 +45,7 @@ export default function Projects() {
                 <h2 className="text-xl text-white font-bold">
                   {projects[0].title}
                 </h2>
-                <p className="text-gray-300">{projects[0].desc}</p>
+                <p className="text-gray-300">{projects[0].slug}</p>
               </div>
             </Link>
 
@@ -57,7 +57,7 @@ export default function Projects() {
               <h2 className="text-xl text-white font-bold">
                 {projects[1].title}
               </h2>
-              <p className="text-gray-300">{projects[1].desc}</p>
+              <p className="text-gray-300">{projects[1].slug}</p>
             </Link>
 
             <div className="col-span-1 sm:col-span-2"></div>
@@ -70,7 +70,7 @@ export default function Projects() {
                 className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform"
               >
                 <h2 className="text-xl text-white font-bold">{proj.title}</h2>
-                <p className="text-gray-400">{proj.desc}</p>
+                <p className="text-gray-400">{proj.slug}</p>
               </Link>
             ))}
           </div>

@@ -1,4 +1,5 @@
 import Project from "../models/Project.js";
+import slugify from "slugify";
 
 // GET all projects
 export const getProjects = async (req, res) => {
@@ -24,7 +25,14 @@ export const getProjectBySlug = async (req, res) => {
 // CREATE project (admin)
 export const createProject = async (req, res) => {
   try {
-    const project = await Project.create(req.body);
+    const { title, desc } = req.body;
+
+    const project = await Project.create({
+      title,
+      desc,
+      slug: slugify(title, { lower: true, strict: true }),
+    });
+
     res.status(201).json(project);
   } catch (err) {
     res.status(400).json({ message: "Failed to create project" });
@@ -34,9 +42,18 @@ export const createProject = async (req, res) => {
 // UPDATE project
 export const updateProject = async (req, res) => {
   try {
-    const updated = await Project.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const { title, desc } = req.body;
+
+    const updated = await Project.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        desc,
+        slug: slugify(title, { lower: true, strict: true }),
+      },
+      { new: true }
+    );
+
     res.json(updated);
   } catch (err) {
     res.status(400).json({ message: "Failed to update project" });

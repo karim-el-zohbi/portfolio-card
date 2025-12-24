@@ -2,16 +2,12 @@ import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema(
   {
-    slug: {
-      type: String,
-      required: true,
-      unique: true, // "tictactoe", "weather-app"
-    },
-    title: String,
-    shortDesc: String,
-    longDesc: String,
-    tech: [String],
-    coverRoute: String, // "/tictactoe"
+    title: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+    desc: { type: String, required: true },
+    fullDesc: { type: String }, // detailed page text
+    tech: [{ type: String }], // React, JS, Tailwind...
+    featured: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

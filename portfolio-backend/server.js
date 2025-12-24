@@ -10,6 +10,7 @@ import messagesRoutes from "./routes/messages.js";
 import statsRoutes from "./routes/stats.js";
 
 dotenv.config();
+console.log("🔥 SERVER STARTED 🔥");
 
 const app = express();
 const PORT = process.env.PORT || 4000;

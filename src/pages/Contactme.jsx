@@ -88,7 +88,7 @@ export default function Contact() {
           </div>
         )}
         {isSent && (
-          <div className="bg-green-500 text-xl font-bold txt-neon ">
+          <div className="bg-green-500/50 rounded-xl mt-2 p-2 text-xl font-bold text-white ">
             Succeed
           </div>
         )}
