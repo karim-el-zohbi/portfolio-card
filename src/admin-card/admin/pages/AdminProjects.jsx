@@ -6,7 +6,12 @@ export default function AdminProjects() {
   const [ref, visible] = useInView();
   const [projects, setProjects] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  const [formData, setFormData] = useState({ title: "", desc: "" });
+  const [formData, setFormData] = useState({
+    title: "",
+    desc: "",
+    slug: "",
+    tech: "",
+  });
   const adminHeaders = {
     headers: { "x-admin-key": "helloworld!" },
   };
@@ -27,7 +32,12 @@ export default function AdminProjects() {
   // START EDIT
   const startEdit = (project) => {
     setEditingId(project._id);
-    setFormData({ title: project.title, desc: project.desc });
+    setFormData({
+      title: project.title,
+      desc: project.desc,
+      slug: project.slug,
+      tech: project.tech,
+    });
   };
 
   // SAVE EDIT
@@ -55,6 +65,8 @@ export default function AdminProjects() {
         {
           title: "New Project",
           desc: "Project description",
+          slug: "slug goes here",
+          tech: "tech",
         },
         adminHeaders
       );
@@ -111,11 +123,25 @@ export default function AdminProjects() {
                     setFormData({ ...formData, title: e.target.value })
                   }
                 />
+                <input
+                  className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
+                  value={formData.slug}
+                  onChange={(e) =>
+                    setFormData({ ...formData, slug: e.target.value })
+                  }
+                />
                 <textarea
                   className="w-full mb-3 p-2 rounded bg-black text-white border brd-neon"
                   value={formData.desc}
                   onChange={(e) =>
                     setFormData({ ...formData, desc: e.target.value })
+                  }
+                />
+                <input
+                  className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
+                  value={formData.tech}
+                  onChange={(e) =>
+                    setFormData({ ...formData, tech: e.target.value })
                   }
                 />
 
@@ -137,6 +163,8 @@ export default function AdminProjects() {
                 <div>
                   <h2 className="text-white font-bold">{project.title}</h2>
                   <p className="text-gray-400 text-sm">{project.desc}</p>
+                  <p className="text-gray-400 text-sm">{project.slug}</p>
+                  <p className="text-gray-400 text-sm">{project.tech}</p>
                 </div>
                 <button
                   onClick={() => startEdit(project)}
