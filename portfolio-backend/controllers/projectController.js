@@ -25,12 +25,25 @@ export const getProjectBySlug = async (req, res) => {
 // CREATE project (admin)
 export const createProject = async (req, res) => {
   try {
-    const { title, desc } = req.body;
+    const { title, desc, tech, slug } = req.body;
+
+    if (!title || !desc) {
+      return res
+        .status(400)
+        .json({ message: "Title and description required" });
+    }
 
     const project = await Project.create({
       title,
+      slug: slug
+        ? slugify(slug, { lower: true, strict: true })
+        : slugify(title, { lower: true, strict: true }),
       desc,
-      slug: slugify(title, { lower: true, strict: true }),
+      tech: Array.isArray(tech)
+        ? tech
+        : tech
+        ? tech.split(",").map((t) => t.trim())
+        : [],
     });
 
     res.status(201).json(project);
@@ -44,17 +57,24 @@ export const updateProject = async (req, res) => {
   try {
     const { title, desc, slug, tech } = req.body;
 
-    const updated = await Project.findByIdAndUpdate(
-      req.params.id,
-      {
-        title,
-        desc,
-        slug: slugify(title, { lower: true, strict: true }),
-        slug,
-        tech,
-      },
-      { new: true }
-    );
+    const updateData = {
+      title,
+      desc,
+      tech: Array.isArray(tech)
+        ? tech
+        : tech
+        ? tech.split(",").map((t) => t.trim())
+        : [],
+    };
+
+    // ONLY update slug if admin explicitly sends one
+    if (slug && slug.trim() !== "") {
+      updateData.slug = slugify(slug, { lower: true, strict: true });
+    }
+
+    const updated = await Project.findByIdAndUpdate(req.params.id, updateData, {
+      new: true,
+    });
 
     res.json(updated);
   } catch (err) {

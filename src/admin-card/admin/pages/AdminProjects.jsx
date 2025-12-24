@@ -8,8 +8,8 @@ export default function AdminProjects() {
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     title: "",
-    desc: "",
     slug: "",
+    desc: "",
     tech: "",
   });
   const adminHeaders = {
@@ -122,6 +122,7 @@ export default function AdminProjects() {
                 <input
                   className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
                   value={formData.title}
+                  placeholder="title of project"
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
                   }
@@ -129,6 +130,7 @@ export default function AdminProjects() {
                 <input
                   className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
                   value={formData.slug}
+                  placeholder="slug for project"
                   onChange={(e) =>
                     setFormData({ ...formData, slug: e.target.value })
                   }
@@ -136,6 +138,7 @@ export default function AdminProjects() {
                 <textarea
                   className="w-full mb-3 p-2 rounded bg-black text-white border brd-neon"
                   value={formData.desc}
+                  placeholder="full description"
                   onChange={(e) =>
                     setFormData({ ...formData, desc: e.target.value })
                   }
@@ -143,6 +146,7 @@ export default function AdminProjects() {
                 <input
                   className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
                   value={formData.tech}
+                  placeholder="tech used"
                   onChange={(e) =>
                     setFormData({ ...formData, tech: e.target.value })
                   }

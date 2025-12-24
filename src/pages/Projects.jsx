@@ -47,7 +47,8 @@ export default function Projects() {
     );
   }
 
-  if (projects.length < 4) return null; // safety
+  // if (projects.length < 4) return null; // safety
+  const isSpecialGrid = projects.length === 4;
 
   return (
     <Element name="projects">
@@ -62,92 +63,112 @@ export default function Projects() {
             My Projects
           </h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-[1fr_auto_auto] gap-6 w-full px-4">
-            {/* LEFT MAIN */}
-            <Link
-              to={`/projects/${projects[0].slug}`}
-              className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform flex flex-col justify-between sm:row-span-3"
-            >
-              <div>
-                <h2 className="text-xl text-white font-bold">
-                  {projects[0].title}
-                </h2>
-                <p className="text-gray-300">{projects[0].slug}</p>
-              </div>
-              {projects[0].tech && (
-                <div className="flex gap-2 flex-wrap mt-2">
-                  {(Array.isArray(projects[0].tech)
-                    ? projects[0].tech
-                    : projects[0].tech.split(",")
-                  ).map((t) => (
-                    <span
-                      key={t}
-                      className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
-                    >
-                      {t.trim()}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </Link>
-
-            {/* RIGHT MAIN */}
-            <Link
-              to={`/projects/${projects[1].slug}`}
-              className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform sm:col-span-2"
-            >
-              <h2 className="text-xl text-white font-bold">
-                {projects[1].title}
-              </h2>
-              <p className="text-gray-300">{projects[1].slug}</p>
-              {projects[1].tech && (
-                <div className="flex gap-2 flex-wrap mt-2">
-                  {(Array.isArray(projects[1].tech)
-                    ? projects[1].tech
-                    : projects[1].tech.split(",")
-                  ).map((t) => (
-                    <span
-                      key={t}
-                      className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
-                    >
-                      {t.trim()}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </Link>
-
-            <div className="col-span-1 sm:col-span-2"></div>
-
-            {/* FOOTERS */}
-            {projects.slice(2, 4).map((proj) => (
+          {isSpecialGrid ? (
+            // 🔥 SPECIAL 4-PROJECT GRID
+            <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-[1fr_auto_auto] gap-6 w-full px-4">
+              {/* LEFT MAIN */}
               <Link
-                key={project._id}
-                to={`/projects/${proj.slug}`}
-                className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform"
+                to={`/projects/${projects[0].slug}`}
+                className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform flex flex-col justify-between sm:row-span-3"
               >
-                <h2 className="text-xl text-white font-bold">{proj.title}</h2>
-                <p className="text-gray-400">{proj.slug}</p>
-                {proj.tech && (
+                <div>
+                  <h2 className="text-xl text-white font-bold">
+                    {projects[0].title}
+                  </h2>
+                  <p className="text-gray-300">{projects[0].slug}</p>
+                  {projects[0].tech && (
+                    <div className="flex gap-2 flex-wrap mt-2">
+                      {" "}
+                      {(Array.isArray(projects[0].tech)
+                        ? projects[0].tech
+                        : projects[0].tech.split(",")
+                      ).map((t) => (
+                        <span
+                          key={t}
+                          className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
+                        >
+                          {" "}
+                          {t.trim()}{" "}
+                        </span>
+                      ))}{" "}
+                    </div>
+                  )}
+                </div>
+              </Link>
+
+              {/* RIGHT MAIN */}
+              <Link
+                to={`/projects/${projects[1].slug}`}
+                className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform sm:col-span-2"
+              >
+                <h2 className="text-xl text-white font-bold">
+                  {projects[1].title}
+                </h2>
+                <p className="text-gray-300">{projects[1].slug}</p>
+                {projects[1].tech && (
                   <div className="flex gap-2 flex-wrap mt-2">
-                    {(Array.isArray(proj.tech)
-                      ? proj.tech
-                      : proj.tech.split(",")
+                    {" "}
+                    {(Array.isArray(projects[1].tech)
+                      ? projects[1].tech
+                      : projects[1].tech.split(",")
                     ).map((t) => (
                       <span
                         key={t}
                         className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
                       >
-                        {t.trim()}
+                        {" "}
+                        {t.trim()}{" "}
                       </span>
-                    ))}
+                    ))}{" "}
                   </div>
                 )}
               </Link>
-            ))}
-          </div>
+
+              <div className="col-span-1 sm:col-span-2"></div>
+
+              {/* FOOTERS */}
+              {projects.slice(2).map((proj) => (
+                <ProjectCard key={proj._id} project={proj} />
+              ))}
+            </div>
+          ) : (
+            // 📦 STACKED GRID (≤3 or ≥5)
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full px-4">
+              {projects.map((proj) => (
+                <ProjectCard key={proj._id} project={proj} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Element>
+  );
+}
+
+function ProjectCard({ project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform"
+    >
+      <h2 className="text-xl text-white font-bold">{project.title}</h2>
+      <p className="text-gray-400">{project.slug}</p>
+
+      {project.tech && (
+        <div className="flex gap-2 flex-wrap mt-2">
+          {(Array.isArray(project.tech)
+            ? project.tech
+            : project.tech.split(",")
+          ).map((t, i) => (
+            <span
+              key={`${t}-${i}`}
+              className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
+            >
+              {t.trim()}
+            </span>
+          ))}
+        </div>
+      )}
+    </Link>
   );
 }
