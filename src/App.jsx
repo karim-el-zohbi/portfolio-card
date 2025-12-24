@@ -12,12 +12,12 @@ import AdminLayout from "./admin-card/admin/AdminLayout";
 import AdminHome from "./admin-card/admin/pages/AdminHome";
 import AdminProjects from "./admin-card/admin/pages/AdminProjects";
 import AdminStats from "./admin-card/admin/pages/AdminStats";
-import AdminEmails from "./admin-card/admin/pages/AdminEmails";
+// import AdminEmails from "./admin-card/admin/pages/AdminEmails";
 import AdminMessages from "./admin-card/admin/pages/AdminMessages";
 
-import Tictactoe from "./pages/projects/tictactoe";
-import Sefactory from "./pages/projects/sefactory";
-import Weatherapp from "./pages/projects/Weatherapp";
+// import Tictactoe from "./pages/projects/tictactoe";
+// import Sefactory from "./pages/projects/sefactory";
+// import Weatherapp from "./pages/projects/Weatherapp";
 import ScrollProgress from "./component/ScrollProgress";
 import Portfolioweb from "./pages/projects/portfolioweb";
 import ProjectDetails from "./pages/projects/projectDetails";
@@ -42,9 +42,9 @@ function App() {
         />
 
         {/* <Route path="/tictactoe" element={<Tictactoe />} /> */}
-        <Route path="/sefactory" element={<Sefactory />} />
-        <Route path="/weatherapp" element={<Weatherapp />} />
-        <Route path="/portfolioweb" element={<Portfolioweb />} />
+        {/* <Route path="/sefactory" element={<Sefactory />} /> */}
+        {/* <Route path="/weatherapp" element={<Weatherapp />} /> */}
+        {/* <Route path="/portfolioweb" element={<Portfolioweb />} /> */}
         <Route path="/projects/:slug" element={<ProjectDetails />} />
 
         {/* projects routes inside main page renders on a page alone */}
@@ -52,7 +52,7 @@ function App() {
           <Route index element={<AdminHome />} />
           <Route path="projects" element={<AdminProjects />} />
           <Route path="stats" element={<AdminStats />} />
-          <Route path="emails" element={<AdminEmails />} />
+          {/* <Route path="emails" element={<AdminEmails />} /> */}
           <Route path="messages" element={<AdminMessages />} />
           {/* admin routes */}
         </Route>

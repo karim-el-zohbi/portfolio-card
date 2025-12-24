@@ -1,4 +1,5 @@
 import Project from "../models/Project.js";
+import trackVisit from "../middleware/trackVisit.js";
 import slugify from "slugify";
 
 // GET all projects
@@ -89,5 +90,18 @@ export const deleteProject = async (req, res) => {
     res.json({ message: "Deleted" });
   } catch (err) {
     res.status(400).json({ message: "Failed to delete project" });
+  }
+};
+
+export const getProjectBySlugView = async (req, res) => {
+  try {
+    const project = await Project.findOne({ slug: req.params.slug });
+    if (!project) return res.status(404).json({ message: "Not found" });
+
+    await trackVisit(`project:${project.slug}`);
+
+    res.json(project);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch project" });
   }
 };

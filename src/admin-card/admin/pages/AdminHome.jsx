@@ -48,19 +48,18 @@ export default function AdminHome() {
         </NavLink>
 
         <NavLink
-          to="/admin/emails"
-          className="bg-color border-2 brd-neon p-6 rounded-xl shdw-neon hover:scale-105 transition-transform"
-        >
-          <h2 className="text-xl font-bold text-white">Unread Emails</h2>
-          <p className="text-gray-400 text-4xl mt-4">5</p>
-        </NavLink>
-
-        <NavLink
           to="/admin/messages"
           className="bg-color border-2 brd-neon p-6 rounded-xl shdw-neon hover:scale-105 transition-transform"
         >
           <h2 className="text-xl font-bold text-white">New Messages</h2>
           <p className="text-gray-400 text-4xl mt-4">{messageCount}</p>
+        </NavLink>
+
+        <NavLink
+          to="/admin/stats"
+          className="bg-color border-2 brd-neon p-6 rounded-xl shdw-neon hover:scale-105 transition-transform"
+        >
+          <h2 className="text-xl font-bold text-white">Stastics</h2>
         </NavLink>
       </div>
     </div>
