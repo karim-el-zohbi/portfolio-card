@@ -57,7 +57,7 @@ export default function ProjectDetails() {
         <p className="text-white">{project.desc}</p>
 
         {/* Tech stack */}
-        {project.tech?.length > 0 && (
+        {/* {project.tech?.length > 0 && (
           <div className="flex gap-2 flex-wrap mt-2">
             {project.tech.map((t) => (
               <span
@@ -68,7 +68,7 @@ export default function ProjectDetails() {
               </span>
             ))}
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

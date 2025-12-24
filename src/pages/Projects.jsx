@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Element } from "react-scroll";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 
 export default function Projects() {
+  const { slug } = useParams();
   const [ref, visible] = useInView();
   const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // if (!slug) return;
+    async function fetchProject() {
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/api/projects/${slug}`
+        );
+        setProject(res.data);
+      } catch (err) {
+        console.error("Project not found", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProject();
+  }, [slug]);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -19,6 +39,13 @@ export default function Projects() {
     }
     fetchProjects();
   }, []);
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-color flex items-center justify-center text-white">
+        Loading...
+      </div>
+    );
+  }
 
   if (projects.length < 4) return null; // safety
 
@@ -47,6 +74,21 @@ export default function Projects() {
                 </h2>
                 <p className="text-gray-300">{projects[0].slug}</p>
               </div>
+              {projects[0].tech && (
+                <div className="flex gap-2 flex-wrap mt-2">
+                  {(Array.isArray(projects[0].tech)
+                    ? projects[0].tech
+                    : projects[0].tech.split(",")
+                  ).map((t) => (
+                    <span
+                      key={t}
+                      className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
+                    >
+                      {t.trim()}
+                    </span>
+                  ))}
+                </div>
+              )}
             </Link>
 
             {/* RIGHT MAIN */}
@@ -58,6 +100,21 @@ export default function Projects() {
                 {projects[1].title}
               </h2>
               <p className="text-gray-300">{projects[1].slug}</p>
+              {projects[1].tech && (
+                <div className="flex gap-2 flex-wrap mt-2">
+                  {(Array.isArray(projects[1].tech)
+                    ? projects[1].tech
+                    : projects[1].tech.split(",")
+                  ).map((t) => (
+                    <span
+                      key={t}
+                      className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
+                    >
+                      {t.trim()}
+                    </span>
+                  ))}
+                </div>
+              )}
             </Link>
 
             <div className="col-span-1 sm:col-span-2"></div>
@@ -65,12 +122,27 @@ export default function Projects() {
             {/* FOOTERS */}
             {projects.slice(2, 4).map((proj) => (
               <Link
-                key={proj._id}
+                key={project._id}
                 to={`/projects/${proj.slug}`}
                 className="bg-color p-6 border-2 brd-neon rounded-xl shdw-neon hover:scale-105 transition-transform"
               >
                 <h2 className="text-xl text-white font-bold">{proj.title}</h2>
                 <p className="text-gray-400">{proj.slug}</p>
+                {proj.tech && (
+                  <div className="flex gap-2 flex-wrap mt-2">
+                    {(Array.isArray(proj.tech)
+                      ? proj.tech
+                      : proj.tech.split(",")
+                    ).map((t) => (
+                      <span
+                        key={t}
+                        className="bg-prjt-apps txt-prjt-apps px-3 py-1 rounded-md text-sm font-bold hover:scale-110 transition-transform"
+                      >
+                        {t.trim()}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </Link>
             ))}
           </div>
