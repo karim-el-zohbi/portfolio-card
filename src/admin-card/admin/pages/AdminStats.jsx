@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -7,6 +8,7 @@ export default function AdminStats() {
   const [ref, visible] = useInView();
 
   const [stats, setStats] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchStats() {
@@ -28,8 +30,16 @@ export default function AdminStats() {
       }`}
     >
       <StatCard title="Total Visits" value={stats.totalVisits} />
-      <StatCard title="Projects" value={stats.totalProjects} />
-      <StatCard title="Messages" value={stats.totalMessages} />
+      <StatCard
+        title="Projects"
+        value={stats.totalProjects}
+        onClick={() => navigate("/admin/projects")}
+      />
+      <StatCard
+        title="Messages"
+        value={stats.totalMessages}
+        onClick={() => navigate("/admin/messages")}
+      />
       <StatCard
         title="Top Project"
         value={stats.topProject?.page?.replace("project:", "") || "—"}
@@ -38,9 +48,19 @@ export default function AdminStats() {
   );
 }
 
-function StatCard({ title, value }) {
+function StatCard({ title, value, onClick }) {
   return (
-    <div className="bg-color border-2 brd-neon p-6 rounded-xl">
+    <div
+      onClick={onClick}
+      className={`bg-color border-2 brd-neon p-6 rounded-xl ${
+        onClick ? "cursor-pointer hover:scale-105 transition-transform" : ""
+      }`}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === "Enter" || e.key === " ")) onClick();
+      }}
+    >
       <h2 className="text-gray-400">{title}</h2>
       <p className="text-3xl txt-neon font-bold">{value}</p>
     </div>
