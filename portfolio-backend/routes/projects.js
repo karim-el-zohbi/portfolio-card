@@ -1,21 +1,29 @@
-const express = require("express");
+import express from "express";
+import {
+  getProjects,
+  getProjectBySlug,
+  createProject,
+  updateProject,
+  deleteProject,
+} from "../controllers/projectController.js";
+import adminAuth from "../middleware/adminAuth.js";
+
 const router = express.Router();
-const ctrl = require("../controllers/projectsController");
+console.log("ADMIN AUTH:", adminAuth);
 
-// simple middleware to protect admin actions
-function requireAdmin(req, res, next) {
-  const key = req.header("x-admin-key");
-  if (!key || key !== process.env.ADMIN_KEY)
-    return res.status(401).json({ error: "unauthorized" });
-  return next();
-}
+router.get("/", getProjects);
+router.get("/:slug", getProjectBySlug);
 
-router.get("/", ctrl.listProjects);
-router.get("/:id", ctrl.getProject);
+router.post("/", adminAuth, createProject);
+router.put(
+  "/:id",
+  (req, res, next) => {
+    console.log("PUT /api/projects HIT");
+    next();
+  },
+  adminAuth,
+  updateProject
+);
+router.delete("/:id", adminAuth, deleteProject);
 
-// protected
-router.post("/", requireAdmin, ctrl.createProject);
-router.put("/:id", requireAdmin, ctrl.updateProject);
-router.delete("/:id", requireAdmin, ctrl.deleteProject);
-
-module.exports = router;
+export default router;

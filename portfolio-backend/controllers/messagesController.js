@@ -1,40 +1,35 @@
-const Message = require("../models/Message");
+import Message from "../models/Message.js";
 
-async function createMessage(req, res) {
+export const createMessage = async (req, res) => {
   try {
     const { name, email, message } = req.body;
-    if (!name || !email || !message) {
-      return res
-        .status(400)
-        .json({ error: "name, email and message required" });
-    }
-    const doc = await Message.create({ name, email, message });
-    return res.status(201).json(doc);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "server error" });
-  }
-}
 
-async function listMessages(req, res) {
+    const newMessage = await Message.create({
+      name,
+      email,
+      message,
+    });
+
+    res.status(201).json(newMessage);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to create message" });
+  }
+};
+
+export const listMessages = async (req, res) => {
   try {
-    const docs = await Message.find().sort({ createdAt: -1 }).limit(500);
-    return res.json(docs);
+    const messages = await Message.find().sort({ createdAt: -1 });
+    res.json(messages);
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "server error" });
+    res.status(500).json({ error: "Failed to fetch messages" });
   }
-}
+};
 
-async function deleteMessage(req, res) {
+export const deleteMessage = async (req, res) => {
   try {
-    const { id } = req.params;
-    await Message.findByIdAndDelete(id);
-    return res.json({ ok: true });
+    await Message.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "server error" });
+    res.status(500).json({ error: "Delete failed" });
   }
-}
-
-module.exports = { createMessage, listMessages, deleteMessage };
+};

@@ -30,13 +30,7 @@ export default function Sidebar({ onLinkClick, className }) {
         >
           Statistics
         </NavLink>
-        <NavLink
-          to="/admin/emails"
-          onClick={onLinkClick}
-          className={`p-2 rounded bg-neon-hover txt-black-hover transition-colors`}
-        >
-          Emails
-        </NavLink>
+
         <NavLink
           to="/admin/messages"
           onClick={onLinkClick}

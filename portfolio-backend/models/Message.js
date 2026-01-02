@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true, maxlength: 100 },
-  email: { type: String, required: true, trim: true, maxlength: 200 },
-  message: { type: String, required: true, trim: true, maxlength: 2000 },
-  createdAt: { type: Date, default: Date.now },
-});
+const messageSchema = new mongoose.Schema(
+  {
+    name: String,
+    email: String,
+    message: String,
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("Message", messageSchema);
+export default mongoose.model("Message", messageSchema);
