@@ -38,9 +38,9 @@ export default function Navbar() {
             to="home"
             smooth={true}
             duration={650}
-            className="font-bold txt-neon txt-neon-hover text-lg"
+            className="font-bold txt-neon txt-neon-hover text-md"
           >
-            PORTFOLIO.DEV
+            KARIM_EL_ZOHBI.DEV
           </Link>
           {/* Link used to scroll to the section named "home" */}
         </div>

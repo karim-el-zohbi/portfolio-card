@@ -19,7 +19,7 @@ export default function AdminStats() {
     }
     fetchStats();
   }, []);
-
+  // Show loading state if stats are not yet fetched
   if (!stats) return <p className="text-white">Loading...</p>;
 
   return (
