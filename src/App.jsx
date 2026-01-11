@@ -19,7 +19,6 @@ import AdminMessages from "./admin-card/admin/pages/AdminMessages";
 // import Sefactory from "./pages/projects/sefactory";
 // import Weatherapp from "./pages/projects/Weatherapp";
 import ScrollProgress from "./component/ScrollProgress";
-import Portfolioweb from "./pages/projects/portfolioweb";
 import ProjectDetails from "./pages/projects/projectDetails";
 
 function App() {
@@ -41,10 +40,6 @@ function App() {
           }
         />
 
-        {/* <Route path="/tictactoe" element={<Tictactoe />} /> */}
-        {/* <Route path="/sefactory" element={<Sefactory />} /> */}
-        {/* <Route path="/weatherapp" element={<Weatherapp />} /> */}
-        {/* <Route path="/portfolioweb" element={<Portfolioweb />} /> */}
         <Route path="/projects/:slug" element={<ProjectDetails />} />
 
         {/* projects routes inside main page renders on a page alone */}
@@ -52,7 +47,6 @@ function App() {
           <Route index element={<AdminHome />} />
           <Route path="projects" element={<AdminProjects />} />
           <Route path="stats" element={<AdminStats />} />
-          {/* <Route path="emails" element={<AdminEmails />} /> */}
           <Route path="messages" element={<AdminMessages />} />
           {/* admin routes */}
         </Route>
