@@ -4,31 +4,33 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 export default function AdminHome() {
-  const [ref, visible] = useInView();
-  const [messageCount, setMessageCount] = useState(0);
-  const [projectCount, setProjectCount] = useState(0);
+  const [ref, visible] = useInView(); // Hook to track visibility
+  const [messageCount, setMessageCount] = useState(0); // State for message count
+  const [projectCount, setProjectCount] = useState(0); // State for project count
 
   useEffect(() => {
+    // Fetch message count from the backend
     async function fetchMessagesCount() {
       try {
         const res = await axios.get("http://localhost:4000/api/messages", {
           headers: { "x-admin-key": "helloworld!" },
         });
-
+        // Set the message count state
         setMessageCount(res.data.length);
       } catch (err) {
         console.error("Failed to fetch message count", err);
       }
     }
-
+    // Invoke the fetch function
     fetchMessagesCount();
-  }, []);
+  }, []); // Empty dependency array to run once on mount
   useEffect(() => {
+    // Fetch project count from the backend
     axios
       .get("http://localhost:4000/api/projects")
       .then((res) => setProjectCount(res.data.length))
       .catch((err) => console.error(err));
-  }, []);
+  }, []); // Empty dependency array to run once on mount
   return (
     <div
       ref={ref}

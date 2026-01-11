@@ -18,19 +18,22 @@ export default function AdminProjects() {
 
   // FETCH PROJECTS
   useEffect(() => {
+    // Fetch projects from the backend
     async function fetchProjects() {
       try {
+        // Make GET request to fetch projects
         const res = await axios.get("http://localhost:4000/api/projects");
         setProjects(res.data);
       } catch (err) {
         console.error("Failed to fetch projects", err);
       }
     }
-    fetchProjects();
-  }, []);
+    fetchProjects(); // Invoke the fetch function
+  }, []); // Empty dependency array to run once on mount
 
   // START EDIT
   const startEdit = (project) => {
+    // Set the editing ID and populate form data with project details
     setEditingId(project._id);
     setFormData({
       title: project.title,
@@ -39,9 +42,10 @@ export default function AdminProjects() {
       tech: project.tech,
     });
   };
-
+  // SAVE EDIT
   const saveEdit = async (id) => {
     try {
+      // Make PUT request to update the project
       const res = await axios.put(
         `http://localhost:4000/api/projects/${id}`,
         formData,
@@ -54,15 +58,16 @@ export default function AdminProjects() {
 
       // update local state with new project data
       setProjects((prev) => prev.map((p) => (p._id === id ? res.data : p)));
-
+      // Clear editing state
       setEditingId(null);
     } catch (err) {
       console.error("Update failed", err);
     }
   };
-
+  // ADD PROJECT
   const addProject = async () => {
     try {
+      // Make POST request to create a new project
       const res = await axios.post(
         "http://localhost:4000/api/projects",
         {
@@ -71,23 +76,26 @@ export default function AdminProjects() {
           slug: "slug goes here",
           tech: "tech",
         },
+        // Include admin key in headers for authentication
         adminHeaders
       );
-
+      // Update local state to include the new project
       setProjects((prev) => [...prev, res.data]);
     } catch (err) {
       console.error("Create failed", err);
     }
   };
+  // DELETE PROJECT
   const deleteProject = async (id) => {
+    // Confirm deletion
     if (!confirm("Delete this project?")) return;
-
+    // Proceed with deletion
     try {
       await axios.delete(
         `http://localhost:4000/api/projects/${id}`,
         adminHeaders
       );
-
+      // Update local state to remove the deleted project
       setProjects((prev) => prev.filter((p) => p._id !== id));
     } catch (err) {
       console.error("Delete failed", err);

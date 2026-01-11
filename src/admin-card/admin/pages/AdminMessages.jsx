@@ -3,43 +3,47 @@ import { useInView } from "react-intersection-observer";
 import axios from "axios";
 
 export default function AdminMessages() {
-  const [ref, visible] = useInView();
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [ref, visible] = useInView(); // Hook to track visibility
+  const [messages, setMessages] = useState([]); // State for messages
+  const [loading, setLoading] = useState(true); // State for loading status
 
   useEffect(() => {
+    // Fetch messages from the backend
     async function fetchMessages() {
       try {
+        // Make GET request to fetch messages
         const res = await axios.get("http://localhost:4000/api/messages", {
+          // Include admin key in headers for authentication
           headers: { "x-admin-key": "helloworld!" },
         });
+        // Set the messages state with the fetched data
         setMessages(res.data);
       } catch (err) {
         console.error("failed to fetch messages", err);
       } finally {
+        // Set loading to false after fetch attempt
         setLoading(false);
       }
     }
+    // Invoke the fetch function
     fetchMessages();
-  }, []);
+  }, []); // Empty dependency array to run once on mount
+
+  // Function to delete a message by ID
 
   const deleteMessage = async (id) => {
     try {
+      // Make DELETE request to delete the message
       await axios.delete(`http://localhost:4000/api/messages/${id}`, {
         headers: { "x-admin-key": "helloworld!" },
       });
+      // Update the messages state to remove the deleted message
       setMessages((prev) => prev.filter((msg) => msg._id !== id));
     } catch (err) {
       console.error("Delete failed", err);
     }
   };
 
-  // const response = await axios.get("http://localhost:4000/api/messages");
-  // setIsMessages(response.data);
-  // await axios.delete(`http://localhost:4000/api/messages/${id}`, {
-  //   headers: { "x-admin-key": "helloworld!" },
-  // });
-  // {isMessages ? return (<div>${messages}</div>)};
   return (
     <div
       ref={ref}
