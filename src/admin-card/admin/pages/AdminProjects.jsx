@@ -11,6 +11,7 @@ export default function AdminProjects() {
     slug: "",
     desc: "",
     tech: "",
+    githubLink: "",
   });
   const adminHeaders = {
     headers: { "x-admin-key": "helloworld!" },
@@ -40,6 +41,7 @@ export default function AdminProjects() {
       desc: project.desc,
       slug: project.slug,
       tech: project.tech,
+      githubLink: project.githubLink,
     });
   };
   // SAVE EDIT
@@ -75,6 +77,7 @@ export default function AdminProjects() {
           desc: "Project description",
           slug: "slug goes here",
           tech: "tech",
+          githubLink: "github link",
         },
         // Include admin key in headers for authentication
         adminHeaders
@@ -157,6 +160,14 @@ export default function AdminProjects() {
                   placeholder="tech used"
                   onChange={(e) =>
                     setFormData({ ...formData, tech: e.target.value })
+                  }
+                />
+                <input
+                  className="w-full mb-2 p-2 rounded bg-black text-white border brd-neon"
+                  value={formData.githublink}
+                  placeholder="github link"
+                  onChange={(e) =>
+                    setFormData({ ...formData, githubLink: e.target.value })
                   }
                 />
 

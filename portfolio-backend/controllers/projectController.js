@@ -33,12 +33,12 @@ export const createProject = async (req, res) => {
   // Create a new project in the database
   try {
     // Extract project details from request body
-    const { title, desc, tech, slug } = req.body;
+    const { title, desc, tech, slug, githubLink } = req.body;
     // Validate required fields
-    if (!title || !desc || !slug || !tech) {
-      return res
-        .status(400)
-        .json({ message: "Title, description, slug and tech are required" });
+    if (!title || !desc || !slug || !tech || !githubLink) {
+      return res.status(400).json({
+        message: "Title, description, slug, tech and githubLink are required",
+      });
     }
     // Create and save the new project
     const project = await Project.create({
@@ -51,6 +51,7 @@ export const createProject = async (req, res) => {
         : tech
         ? tech.split(",").map((t) => t.trim())
         : [],
+      githubLink,
     });
     // Respond with the created project
     res.status(201).json(project);
@@ -62,17 +63,18 @@ export const createProject = async (req, res) => {
 // UPDATE project
 export const updateProject = async (req, res) => {
   try {
-    const { title, desc, slug, tech } = req.body;
+    const { title, desc, slug, tech, githubLink } = req.body;
     // Validate required fields
-    if (!title || !desc || !slug || !tech) {
-      return res
-        .status(400)
-        .json({ message: "Title, description, slug and tech are required" });
+    if (!title || !desc || !slug || !tech || !githubLink) {
+      return res.status(400).json({
+        message: "Title, description, slug, tech and githubLink are required",
+      });
     }
     // Prepare update data
     const updateData = {
       title,
       desc,
+      githubLink,
       tech: Array.isArray(tech)
         ? tech
         : tech

@@ -104,7 +104,7 @@ export default function Contact() {
 
         <div className="flex justify-center gap-5 mt-10 text-gray-400 ">
           <a
-            href="www.linkedin.com/in/karim-al-zohbi-65aa30296"
+            href="https://www.linkedin.com/in/karim-al-zohbi-65aa30296"
             target="_blank"
             rel="noopener noreferrer"
           >
