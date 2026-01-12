@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const ADMIN_PASSWORD = "123456";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 export default function AdminGuard({ children }) {
   const [isAllowed, setIsAllowed] = useState(false);
