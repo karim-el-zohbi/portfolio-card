@@ -20,9 +20,6 @@ importers:
       axios:
         specifier: ^1.13.2
         version: 1.13.2
-      kit-KIT_CODE@latest:
-        specifier: link:/kit-KIT_CODE@latest
-        version: link:../../../../../../kit-KIT_CODE@latest
       react:
         specifier: ^19.2.0
         version: 19.2.3
