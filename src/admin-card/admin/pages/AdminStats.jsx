@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
+
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export default function AdminStats() {
   const [ref, visible] = useInView();
@@ -12,7 +13,7 @@ export default function AdminStats() {
 
   useEffect(() => {
     async function fetchStats() {
-      const res = await axios.get("http://localhost:4000/api/stats", {
+      const res = await axios.get(`http://${VITE_API_URL}/api/stats`, {
         headers: { "x-admin-key": "helloworld!" },
       });
       setStats(res.data);

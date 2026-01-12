@@ -3,6 +3,8 @@ import { useInView } from "react-intersection-observer";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function AdminHome() {
   const [ref, visible] = useInView(); // Hook to track visibility
   const [messageCount, setMessageCount] = useState(0); // State for message count
@@ -12,7 +14,7 @@ export default function AdminHome() {
     // Fetch message count from the backend
     async function fetchMessagesCount() {
       try {
-        const res = await axios.get("http://localhost:4000/api/messages", {
+        const res = await axios.get(`http://${VITE_API_URL}/api/messages`, {
           headers: { "x-admin-key": "helloworld!" },
         });
         // Set the message count state
@@ -27,7 +29,7 @@ export default function AdminHome() {
   useEffect(() => {
     // Fetch project count from the backend
     axios
-      .get("http://localhost:4000/api/projects")
+      .get(`http://${VITE_API_URL}/api/projects`)
       .then((res) => setProjectCount(res.data.length))
       .catch((err) => console.error(err));
   }, []); // Empty dependency array to run once on mount

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function ProjectDetails() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ export default function ProjectDetails() {
     async function fetchProject() {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/projects/${slug}`
+          `http://${VITE_API_URL}/api/projects/${slug}`
         );
         setProject(res.data);
       } catch (err) {

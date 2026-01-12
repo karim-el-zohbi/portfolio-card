@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function AdminMessages() {
   const [ref, visible] = useInView(); // Hook to track visibility
   const [messages, setMessages] = useState([]); // State for messages
@@ -12,7 +14,7 @@ export default function AdminMessages() {
     async function fetchMessages() {
       try {
         // Make GET request to fetch messages
-        const res = await axios.get("http://localhost:4000/api/messages", {
+        const res = await axios.get(`http://${VITE_API_URL}/api/messages`, {
           // Include admin key in headers for authentication
           headers: { "x-admin-key": "helloworld!" },
         });
@@ -34,7 +36,7 @@ export default function AdminMessages() {
   const deleteMessage = async (id) => {
     try {
       // Make DELETE request to delete the message
-      await axios.delete(`http://localhost:4000/api/messages/${id}`, {
+      await axios.delete(`http://${VITE_API_URL}/api/messages/${id}`, {
         headers: { "x-admin-key": "helloworld!" },
       });
       // Update the messages state to remove the deleted message

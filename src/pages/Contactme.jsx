@@ -3,6 +3,8 @@ import { useInView } from "react-intersection-observer";
 import { Element } from "react-scroll";
 import axios from "axios";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function Contact() {
   const [ref, visible] = useInView();
   const [name, setName] = useState("");
@@ -18,7 +20,7 @@ export default function Contact() {
       // returns input info to the console
       `your name: ${name} your email: ${email} your message: ${message}`
     );
-    const response = await axios.post("http://localhost:4000/api/messages", {
+    const response = await axios.post(`http://${VITE_API_URL}/api/messages`, {
       name,
       email,
       message,

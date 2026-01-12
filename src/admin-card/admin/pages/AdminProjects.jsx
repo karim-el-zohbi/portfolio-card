@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function AdminProjects() {
   const [ref, visible] = useInView();
   const [projects, setProjects] = useState([]);
@@ -23,7 +25,7 @@ export default function AdminProjects() {
     async function fetchProjects() {
       try {
         // Make GET request to fetch projects
-        const res = await axios.get("http://localhost:4000/api/projects");
+        const res = await axios.get(`http://${VITE_API_URL}/api/projects`);
         setProjects(res.data);
       } catch (err) {
         console.error("Failed to fetch projects", err);
@@ -49,7 +51,7 @@ export default function AdminProjects() {
     try {
       // Make PUT request to update the project
       const res = await axios.put(
-        `http://localhost:4000/api/projects/${id}`,
+        `http://${VITE_API_URL}/api/projects/${id}`,
         formData,
         {
           headers: {
@@ -71,7 +73,7 @@ export default function AdminProjects() {
     try {
       // Make POST request to create a new project
       const res = await axios.post(
-        "http://localhost:4000/api/projects",
+        `http://${VITE_API_URL}/api/projects`,
         {
           title: "New Project",
           desc: "Project description",
@@ -95,7 +97,7 @@ export default function AdminProjects() {
     // Proceed with deletion
     try {
       await axios.delete(
-        `http://localhost:4000/api/projects/${id}`,
+        `http://${VITE_API_URL}/api/projects/${id}`,
         adminHeaders
       );
       // Update local state to remove the deleted project

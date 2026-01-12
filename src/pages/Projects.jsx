@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export default function Projects() {
   const { slug } = useParams();
   const [ref, visible] = useInView();
@@ -16,7 +18,7 @@ export default function Projects() {
     async function fetchProject() {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/projects/${slug}`
+          `http://${VITE_API_URL}/api/projects/${slug}`
         );
         setProject(res.data);
       } catch (err) {
@@ -31,7 +33,7 @@ export default function Projects() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await axios.get("http://localhost:4000/api/projects");
+        const res = await axios.get(`http://${VITE_API_URL}/api/projects`);
         setProjects(res.data);
       } catch (err) {
         console.error("Failed to load projects", err);
